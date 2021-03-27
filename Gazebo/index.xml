@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gazeboes on cq</title>
+    <link>https://chenqian.ink/gazebo/</link>
+    <description>Recent content in Gazeboes on cq</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenqian.ink/gazebo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git常见命令备忘</title>
+      <link>https://chenqian.ink/Gazebo/git-code/</link>
+      <pubDate>Thu, 11 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Gazebo/git-code/</guid>
+      <description>1. Git 是什么 Git 是用来作版本控制的，类似于解决跟小伙伴一起协作的Word文档，00版，01版……99版。Git怎么解决这个问题的呢？
+ 远程库：设立在Github上； 本地库：本地电脑的某个文件夹； 创建Git语言：  本地库和远程库的上下相互，支持多人； 自动记录所有的更改版本，并注明几页几行进行了修改； 支持回退到某个版本； 要求在提交新版本时，同时提交版本变动的梗概信息，方便他人协作。   免费，开源。  2. Git常见代码 创建本地库，在文件夹右击，Git Bash Here
+git init把某个文件上传到本地库的缓存区
+git add &amp;lt;某个文件名&amp;gt; # 添加单个文件git add . # 添加所有文件让Git意识到内容更新
+git commit -m &amp;quot;此版本修改梗概说明&amp;quot;创建远程库，注册Github，建立一个repository，Github会给出这个远程库地址。
+git remote add origin &amp;quot;https://homepage/chenqian.git&amp;quot; # 跟远程库建立联系把文件夹推送到远程库
+git push origin master从远程库到本地库
+git clone &amp;quot;https://homepage/chenqian.git&amp;quot;3. Git 非常见代码备忘 涉及SSL证书错误问题
+git config --global http.sslVerify &amp;quot;false&amp;quot;涉及ref error
+git pull –-rebase origin master以上，供备忘。</description>
+    </item>
+    
+  </channel>
+</rss>

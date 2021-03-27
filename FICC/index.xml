@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FICCs on cq</title>
+    <link>https://chenqian.ink/ficc/</link>
+    <description>Recent content in FICCs on cq</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenqian.ink/ficc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Yields and Curves in Fixed Income Market</title>
+      <link>https://chenqian.ink/FICC/Yields-and-Curves-in-Fixed-Income-Market/yields-and-curves-in-fixed-income-market/</link>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/FICC/Yields-and-Curves-in-Fixed-Income-Market/yields-and-curves-in-fixed-income-market/</guid>
+      <description>当前信息以及预期会price in 在市场交易品种之中。人们需要构建一些指标，综合各类市场数据，反应总体price in 的情况。比如权益类市场的大盘指数，以及固定收益市场的利率。
+1. YTM现券有不同期限和票息，综合其信息不能用价格本身，需要用 \(YTM\). 为表达简便，假设只有2期现金流：\[\{y|P=\frac{C}{1+y}+\frac{C+100}{(1+y)^2}\}\]用每天的现券价格数据，按剩余期限排列，剔除不合理报价，能得到一串不规则时间序列的 \(YTM\)。通过各类插值技术，可以得到关键期限\(y_1,y_2 \dots y_n\)，并形成 \(YTM\) Curve，这是外汇交易中心（CFETS）的做法。也有只保留关键期限附近的样本，在通过插值技术计算出其他期限的方法，比如中债。具体可见《债券收益率曲线的编制》来自于公众号 金学智库。
+2. Spot rate把公式 (1) 两边乘以\((1+y)^2\)\[C(1+y)+C+100=P(1+y)^2\]\(YTM\) 暗含了利息再投资收益率也是\(y\)，这不太合适。因此，我们需要用不同期限的\(y\)，来计算出实际的再投资收益率。计算实际再投资收益率之前，需要知道spot rate。采用Bootstrap的方法：\[1=\frac{1+y_1}{1+r_1}\]
+\[1=\frac{y_2}{1+r_1} + \frac{1+y_2}{(1+r_2)^2}\]
+以此类推，就可以算出 \(r_3, r_4 \dots r_n\), 也就形成了spot curve. 你再看某个资产的再投资收益率，就是期限结构真实反映的再投资收益率了，\[P(1+r_2)^2=C\frac{(1+r_2)^2}{1+r_1}+C+100\]所以，spot rate适合用来定价。
+3. Forward rate上式中的 \(\frac{(1+r_2)^2}{1+r_1}-1\)，就是时间1到时间2的利率\(r_{12}\)，也即远期利率。站在当前时点来看，1块钱存两年，应该等于1块钱存1年，然后取出来再存一年。\[1\times(1+r_2)^2=1\times(1+r_1)\times(1+r_{12})\]根据spot rate，可以求出\(r_{12},r_{13},\dots r_{1n}\), 这是一类Forward curve，表示1年之后的spot curve，当然你也可以2年之后的spot curve，这些都只包含了当前对未来预期的信息。如果你的预期与市场交易出来的forward curve 不一致，那你就可以交易它。</description>
+    </item>
+    
+  </channel>
+</rss>

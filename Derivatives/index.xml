@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Derivatives on cq</title>
+    <link>https://chenqian.ink/derivatives/</link>
+    <description>Recent content in Derivatives on cq</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://chenqian.ink/derivatives/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>分红与衍生品</title>
+      <link>https://chenqian.ink/Derivatives/Dividend-and-Derivatives/dividend-and-derivatives/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Derivatives/Dividend-and-Derivatives/dividend-and-derivatives/</guid>
+      <description>股票作为权益性资产，是可以参与分红的。而衍生品作为一项义务或者权利合约，本身不参与分红。因此分红事件会对衍生品定价产生影响。当然这种影响可以通过制度设计予以规避。
+1. 标的分红股票分红相对清楚，在公告日\(T_0\)知悉，将在\(T\)日对标的资产除息，并于若干日后支付红利\(D\)。如无其他因素影响，\[S^{开盘}_{T}=S^{收盘}_{T-1}-D\]每只股票分红都会反应在价格里，影响市值，从而每次分红都会影响股票价格指数，特别是大权重股。而ETF基金，则对当年所有分红累积，集中一次作利润分配，也即ETF分红，比如2020年11月11日，上证50公告每份分红0.051，并于同月30日除息。
+2. 对期货的影响期货通过构建无风险套利组合来定价的。分红期在\(T\)内，
+时间\(T_0=0\)\(T_1\)\(T_2\)……\(T\)交易1借\(S_0\)现金，买入现货并持有分红\(D_1\)分红\(D_2\)归还借款及利息\(S_0e^{rt}\)交易2以\(F_0\)价格空头进入期货合约用持有的现券，以\(F_0\)价格了结合约净现金流0\(D_1\)\(D_2\)\(F_0-S_0e^{rT}\)按无风险套利原则，\[F_0=S_0e^{rT}-D_1e^{r(T-T_1)}-D_2e^{r(T-T_2)} \\=(S_0-D_1e^{-rT_1}-D_2e^{-rT_2})e^{rT}\]
+如果基差 \(b=S-F\)，没有分红的,理论基差 \(b=S（1-e^{rT})\)；
+有分红，理论基差\[b=S(1-e^{rT})+D_1 e^{r(T-T_1)}+D_2 e^{r(T-T_2)}\]
+可以看出，分红如果在期货到期之前，是会影响期货定价以及基差的。像国内上市公司，分红期一般集中在5、6、7和8月份（上证50一般在后三个月）。如果你在4月份，观察当季和下季合约升贴水幅度，就是假的，是包含红利影响的。如果你不知道这回事，按假的贴水幅度，做跨期套利交易和风险管理，那是会吃亏的。
+那如何计算刨除红利影响的真实升贴水幅度呢（大佬教的）：
+自己估计红利。用Wind取出成分股和权重，3年平均股利支付率和券商一致预测净利润，算出分红总额，按权重推算对指数的影响；用指数期权来估计，但是目前只支持沪深300指数（下文会论及）。3.</description>
+    </item>
+    
+    <item>
+      <title>Option Margin Analysis</title>
+      <link>https://chenqian.ink/Derivatives/Option-Margin-Analysis/option-margin-analysis/</link>
+      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Derivatives/Option-Margin-Analysis/option-margin-analysis/</guid>
+      <description>这篇短文，主要理解期权保证金公式，以及研究下保证金风险度变化规律，方便盯市。
+1. 定义交易所ETF期权公式定义：
+看涨期权\[c+max\{12\% S-max\{K-S,\quad 0\},\quad 7\%S \}\]看跌期权\[min\{p+max\{12\% S-max\{S-K,\quad 0\},\quad 7\%K \}, \quad K\}\]
+虽然公式看起来很复杂，其实是按合约不同的虚实状态来计算的，覆盖2交易日的波动。从图形上来看更明显：
+大抵可以看出斜率分三个阶段：
+\(S&amp;lt;\frac{K}{1.05}\),深度虚值状态：Margin=\((0.07+\delta)S\)
+\(\frac{K}{1.05}&amp;lt;S&amp;lt;K\),浅度虚值状态：Margin=\((1.12+\delta)S-K\)
+\(S&amp;gt;K\),实值状态：\((0.12+\delta)S\)\(delta\)也在逐步变大。在转向实值阶段，收取保证金的速度最大，保证金比率变化最快。
+看跌期权类似
+卖跨呢？
+卖跨在平值时占用较高，但往往是在平值处开仓，留有一定保证金空间。所以卖跨更关心行情大幅波动（\(\pm5\%\)）后的保证金占用。
+2. 保证金比率对保证金风险度的影响更重要，因为可能会爆仓。所以关心的是，当标的价格波动0.1%时，保证金比率会变化多少。这对现实盯市实践有较大意义。
+假设当日无操作，保证金账户余额不变, \(k_0\)为初始保证金风险度。
+\[Initial \quad Margin \quad ratio =\frac{Margin}{Cash+Margin}=k_0\]
+当S上涨幅度为r时，计算call的保证金风险率\(k\)变动：
+\(S&amp;lt;\frac{K}{1.05}\),深度虚值状态\[M_0=(0.07+\delta_0)S\]\[\Delta k=\frac{(0.07+\delta)(1+r)S - (0.07+\delta_0)S}{M_0/k_0}\]\[=k_0\frac{0.07*r+(1+r)\delta-\delta_0}{0.07+\delta_0}\]
+\(\frac{K}{1.05}&amp;lt;S&amp;lt;K\),浅度虚值状态\[M_0=(1.12+\delta)S-K\]\[\Delta k=k_0\frac{[1.12*r+(1+r)\delta-\delta_0]S}{(1.12+\delta_0)S-K}\]此阶段\(\Delta k\)公式是直接跟S和K相关的，但是关系大吗？应该还好，S和K偏离不超过5%，\(\Delta k\)取倒数可以观察出来。
+\(S&amp;gt;K\),实值状态：
+\[M_0=(0.12+\delta_0)S\]
+\[\Delta k=k_0\frac{0.12*r+(1+r)\delta-\delta_0}{0.12+\delta_0}\]
+结合图来看一下，涉图期权参数为：\(call: \quad \sigma=17.</description>
+    </item>
+    
+    <item>
+      <title>如何用Option对冲现货</title>
+      <link>https://chenqian.ink/Derivatives/%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%9F%E6%9D%83%E5%AF%B9%E5%86%B2%E7%8E%B0%E8%B4%A7/hedge-portfolio-using-option/</link>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Derivatives/%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%9F%E6%9D%83%E5%AF%B9%E5%86%B2%E7%8E%B0%E8%B4%A7/hedge-portfolio-using-option/</guid>
+      <description>考虑采用期权对冲组合Beta，构造Alpha策略。先从指数ETF组合考虑起，因为就相差Alpha收益。
+假设当前指数ETF价格为I，看跌期权价值为p，其中\(p=max\{K-I, 0\} + T\), T代表时间价值，可以小于0，但是不可能与\(K&amp;lt;I\)同时发生。
+Part1 Delta对冲先按Delta对冲，k为对冲系数，\(k=1/\Delta\), 同时\(\Delta\)是\(max\{K-I, 0\}\)的增函数。
+1. 构建对冲价值变化进入对冲时，组合价值为
+\[P_t=I + k\times \{max(K-I, 0) + T\}\]考虑期权到期,时间价值为0，经过\(\Delta t\), 组合价值\[P_T=I+\Delta I + k\times max(K-I-\Delta I, 0)\]
+价值变化量为\[\Delta P=\Delta I + k\times \{max(K-I-\Delta I, 0) - \{max(K-I, 0) + T\}\}\]
+2. 具体情况讨论看起来很复杂，我们分情况讨论。
+2.1 预测未来上涨选择平值期权，K-I=0, \(\Delta=0.5\)\[\frac{\Delta P}{P}=\frac{\Delta I}{I}-\frac{2T}{I}\]
+选择深度实值期权，\(\Delta=1\)
+上涨幅度没有超过实值程度，\(\Delta I &amp;lt; (K-I)\)\[\frac{\Delta P}{P}= -\frac{T}{I}\]上涨幅度超过实值程度，\(\Delta I &amp;gt; (K-I)\)\[\frac{\Delta P}{P}=\frac{\Delta I-(K-I)-T}{I}\]如果选择深度实值合约，资金占用会较多(\(\frac{K-I+T}{I}\)),但时间价值会小于0,对冲层面到期始终会盈利。2.</description>
+    </item>
+    
+    <item>
+      <title>理解Short Gamma策略</title>
+      <link>https://chenqian.ink/Derivatives/Short-Gamma/short-gamma/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Derivatives/Short-Gamma/short-gamma/</guid>
+      <description>在群里扔过这样一个问题。当时我也不知道怎么回答：
+Delta对冲组合Theta是10000，当前的IV是32。第二天开盘跳开3个点，行情没再动直接收盘，IV没动，问组合当天的盈亏是多少钱？
+刚开始完全无从下手。想着算盈亏，必然跟期权组合的PnL公式有关。\[ \Delta PnL=\delta \Delta S + \frac{1}{2}\Gamma (\Delta S)^2 + \theta\Delta t + \nu \Delta \sigma\]其中\(\delta\)已对冲，IV没动所以\(\Delta \sigma =0\)。重点考察中间两项，
+\[\Gamma=\frac{N^{&amp;#39;}(d_1)}{S \sigma \sqrt{T}}\]
+\[\theta=-\frac{S_0 N^{&amp;#39;}(d_1)\sigma}{2\sqrt{T}}-rKe^{-rT}N(d_2)\]因为\(r\)和\(N(d_2)\)很小，近似忽略\(\theta\)后半部分。将\(\Gamma\)换成\(\theta\)的表达式并化简，\[\Delta PnL=\theta\Delta t [1-\frac{(\Delta S/S)^2}{\sigma^2 \Delta t}]\]这也就解决了上面提出的问题。唯一需要注意的细节就是一年按365，还是按252或者256来算。
+回答完问题之后，再回过头来想想。其实题目和\(\Delta PnL\)最终的形式，是在告诉我们\(\Gamma\)收益和\(\theta\)收益是可以相互转化成波动率形式的。那不妨，用\(\Gamma\)来表示下损益：\[\Delta PnL=\frac{1}{2}\Gamma S^2 [(\frac{\Delta S}{S\sqrt{\Delta t}})^2-\sigma^2]\Delta t\]如果说\(\Delta PnL\)可以理解为瞬时损益的话，那右边是个啥？
+先来看\((\frac{\Delta S}{S\sqrt{\Delta t}})^2\)，可看作\(\Delta t\)时间内标的资产收益率的真实方差，如果从过去展望未来的话，就叫做RV。\(\sigma^2\)恰是计算上述希腊字母时使用的收益率，一般使用IV，代表你price in的成本。
+所以说，期权组合损益是跟未来实际波动率与对未来波动率预期之间差值成比例关系的。你可以选择组合做多或者做空波动率，即称作波动率交易。而要最大化这种收益，构造的组合自然是使得Gamma最大，所以也叫long Gamma或者Short Gamma策略，也就是买跨或者卖跨。尤其经典的是卖跨策略。
+上面是让凤娟帮忙画的两幅图，可以看出无论是S&amp;amp;P500的VIX还是国内50ETF的IVIX指数，除剧烈波动期间，市场总是持续对波动率预期过高，反映在隐含波动率总是大于历史波动率。这才是short Gamma策略的内因。原因呢？比如杠杆成本，机构多头需要买保费等等，也不一定正确，大家可以多发散理解。
+注意单单看这个图的Volatility Spread还不够，因为是要未来的RV大于现在的IV才能盈利。所以本质还是波动率的均值回归属性，在震荡期，特别是波动率下行期才是Short Gamma的好时机，不仅能赚真实波动率的钱，还能赚Vega的钱。
+前面都是考虑瞬时损益，而总损益是对\(dt\)的积分：\[PnL=\int_{0}^{T}\frac{1}{2}\Gamma S^2 (RV^2-IV^2) dt\]</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>如何用Option对冲现货 - cq</title>
+    <meta property="og:title" content="如何用Option对冲现货 - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="考虑采用期权对冲组合Beta，构造Alpha策略。先从指数ETF组合考虑起，因为就相差Alpha收益。
+假设当前指数ETF价格为I，看跌期权价值为p，其中\(p=max\{K-I, 0\} &#43; T\), T代表时间价值，可以小于0，但是不可能与\(K&amp;lt;I\)同时发生。
+[&amp;hellip;] 先按Delta对冲，k为对冲系数，\(k=1/\Delta\), 同时\(\Delta\) &amp;hellip;">
+      <meta property="og:description" content="考虑采用期权对冲组合Beta，构造Alpha策略。先从指数ETF组合考虑起，因为就相差Alpha收益。
+假设当前指数ETF价格为I，看跌期权价值为p，其中\(p=max\{K-I, 0\} &#43; T\), T代表时间价值，可以小于0，但是不可能与\(K&amp;lt;I\)同时发生。
+[&amp;hellip;] 先按Delta对冲，k为对冲系数，\(k=1/\Delta\), 同时\(\Delta\) &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="Derivatives">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>如何用Option对冲现货</h1>
+
+<h3>cq
+  /  2020-11-26</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>考虑采用期权对冲组合Beta，构造Alpha策略。先从指数ETF组合考虑起，因为就相差Alpha收益。</p>
+<p>假设当前指数ETF价格为I，看跌期权价值为p，其中<span class="math inline">\(p=max\{K-I, 0\} + T\)</span>, T代表时间价值，可以小于0，但是不可能与<span class="math inline">\(K&lt;I\)</span>同时发生。</p>
+<div id="part1-delta对冲" class="section level2">
+<h2>Part1 Delta对冲</h2>
+<p>先按Delta对冲，k为对冲系数，<span class="math inline">\(k=1/\Delta\)</span>, 同时<span class="math inline">\(\Delta\)</span>是<span class="math inline">\(max\{K-I, 0\}\)</span>的增函数。</p>
+<div id="构建对冲价值变化" class="section level3">
+<h3>1. 构建对冲价值变化</h3>
+<p>进入对冲时，组合价值为</p>
+<p><span class="math display">\[P_t=I + k\times \{max(K-I, 0) + T\}\]</span>
+考虑期权到期,时间价值为0，经过<span class="math inline">\(\Delta t\)</span>, 组合价值
+<span class="math display">\[P_T=I+\Delta I + k\times max(K-I-\Delta I, 0)\]</span></p>
+<p>价值变化量为
+<span class="math display">\[\Delta P=\Delta I + k\times \{max(K-I-\Delta I, 0) - \{max(K-I, 0) + T\}\}\]</span></p>
+</div>
+<div id="具体情况讨论" class="section level3">
+<h3>2. 具体情况讨论</h3>
+<p>看起来很复杂，我们分情况讨论。</p>
+<div id="预测未来上涨" class="section level4">
+<h4>2.1 预测未来上涨</h4>
+<ol style="list-style-type: decimal">
+<li><p>选择平值期权，K-I=0, <span class="math inline">\(\Delta=0.5\)</span>
+<span class="math display">\[\frac{\Delta P}{P}=\frac{\Delta I}{I}-\frac{2T}{I}\]</span></p></li>
+<li><p>选择深度实值期权，<span class="math inline">\(\Delta=1\)</span></p></li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>上涨幅度没有超过实值程度，<span class="math inline">\(\Delta I &lt; (K-I)\)</span>
+<span class="math display">\[\frac{\Delta P}{P}= -\frac{T}{I}\]</span></li>
+<li>上涨幅度超过实值程度，<span class="math inline">\(\Delta I &gt; (K-I)\)</span>
+<span class="math display">\[\frac{\Delta P}{P}=\frac{\Delta I-(K-I)-T}{I}\]</span>
+如果选择深度实值合约，资金占用会较多(<span class="math inline">\(\frac{K-I+T}{I}\)</span>),但时间价值会小于0,对冲层面到期始终会盈利。</li>
+</ol>
+</div>
+<div id="预测未来下跌" class="section level4">
+<h4>2.2 预测未来下跌</h4>
+<ol style="list-style-type: decimal">
+<li><p>选择平值期权，K-I=0, <span class="math inline">\(\Delta=0.5\)</span>
+<span class="math display">\[\frac{\Delta P}{P}=\frac{-\Delta I}{I}-\frac{2T}{I}\]</span></p></li>
+<li><p>选择深度实值期权，<span class="math inline">\(\Delta=1\)</span></p></li>
+</ol>
+<p><span class="math display">\[\frac{\Delta P}{P}= -\frac{T}{I}\]</span></p>
+</div>
+</div>
+<div id="一般性模拟和结论" class="section level3">
+<h3>3. 一般性模拟和结论</h3>
+<p><img src="/Derivatives/如何用期权对冲现货/如何用Option对冲现货_files/figure-html/unnamed-chunk-1-1.png" width="672" /><img src="/Derivatives/如何用期权对冲现货/如何用Option对冲现货_files/figure-html/unnamed-chunk-1-2.png" width="672" /><img src="/Derivatives/如何用期权对冲现货/如何用Option对冲现货_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<p>近4.5%的对冲成本，赚的回来吗？</p>
+<p><img src="/Derivatives/如何用期权对冲现货/如何用Option对冲现货_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>对冲收益一直为正，但是需要考虑流动性补偿和资金成本。</p>
+<p><img src="/Derivatives/如何用期权对冲现货/如何用Option对冲现货_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+就是上面两种情况的综合了，需要承担一定的时间价值成本，但获利的空间比实值更大。</p>
+<p>综上，在预计市场有大幅波动时，无论涨跌，选择平值期权进行Delta对冲。而震荡市且振幅较小时，在流动性补偿和资金占用均衡后，考虑采用较实值的合约对冲，或者采用一些贴水没那么严重的期货对冲。</p>
+<p>其实，上述图形的变化，还是因为put端的Delta在变化，从而让组合在long Delta或者short Delta 和 long Gamma。</p>
+<p>那是否需要定期调整Delta吗？</p>
+<p>如果行情上涨，那Put的Delta变小，组合Delta变为正; 如果行情下跌，那组合Delta变为负，对组合Profit都是有利的。</p>
+<p>定期调整Delta的话，那其实跟轻仓做买跨没啥区别，做的是波动率的上升。</p>
+</div>
+</div>
+<div id="part2-合约面值对冲" class="section level2">
+<h2>Part2 合约面值对冲</h2>
+<p>先按合约面值对冲，k为对冲系数，<span class="math inline">\(k=I/K\)</span>，始终只对冲一半。</p>
+<div id="构建对冲价值变化-1" class="section level3">
+<h3>1. 构建对冲价值变化</h3>
+<p>进入对冲时，价值变化量为
+<span class="math display">\[\Delta P=\Delta I + \frac{I}{K}\times \{max(K-I-\Delta I, 0) - \{max(K-I, 0) + T\}\}\]</span></p>
+</div>
+<div id="具体情况讨论-1" class="section level3">
+<h3>2. 具体情况讨论</h3>
+<p>看起来很复杂，我们分情况讨论。</p>
+<div id="预测未来上涨-1" class="section level4">
+<h4>2.1 预测未来上涨</h4>
+<ol style="list-style-type: decimal">
+<li><p>选择平值期权，K-I=0, <span class="math inline">\(k=1\)</span>
+<span class="math display">\[\frac{\Delta P}{P}=\frac{\Delta I - T}{I}\]</span></p></li>
+<li><p>选择深度实值期权，<span class="math inline">\(k=0.5\)</span></p></li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>上涨幅度没有超过实值程度，<span class="math inline">\(\Delta I &lt; (K-I)\)</span></li>
+</ol>
+<p><span class="math display">\[\frac{\Delta P}{P}= \frac{\Delta I-T}{2I}\]</span></p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>上涨幅度超过实值程度，<span class="math inline">\(\Delta I &gt; (K-I)\)</span>
+<span class="math display">\[\frac{\Delta P}{P}=\frac{\Delta I-I/K\times(K-I+T)}{I}\]</span></li>
+</ol>
+</div>
+<div id="预测未来下跌-1" class="section level4">
+<h4>2.2 预测未来下跌</h4>
+<ol style="list-style-type: decimal">
+<li><p>选择平值期权，K-I=0, <span class="math inline">\(k=1\)</span>
+<span class="math display">\[\frac{\Delta P}{P}=\frac{-T}{I}\]</span></p></li>
+<li><p>选择深度实值期权，<span class="math inline">\(\Delta=1\)</span></p></li>
+</ol>
+<p><span class="math display">\[\frac{\Delta P}{P}= \frac{\Delta I- T}{2I}\]</span></p>
+</div>
+</div>
+<div id="一般性模拟和结论-1" class="section level3">
+<h3>3. 一般性模拟和结论</h3>
+<p><img src="/Derivatives/如何用期权对冲现货/如何用Option对冲现货_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="/Derivatives/如何用期权对冲现货/如何用Option对冲现货_files/figure-html/unnamed-chunk-4-2.png" width="672" />
+对冲成本降低一半</p>
+<p><img src="/Derivatives/如何用期权对冲现货/如何用Option对冲现货_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>考虑流动性补偿和资金成本，可以考虑摈弃实值对冲了。</p>
+<p><img src="/Derivatives/如何用期权对冲现货/如何用Option对冲现货_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>综上，其实按面值对冲成本更低，2.5%不到的成本（1个月）可以考虑在震荡市平价put对冲，相当于买个保险。如果Alpha收益差不多覆盖put成本，那基本上是无风险赚Beta的钱（大抵Alpha没那么高的收益，意思是这个意思）。</p>
+<p>按面值对冲，本质就是hedge或者long delta 和 long Gamma。</p>
+</div>
+</div>
+<div id="part3-结论" class="section level2">
+<h2>Part3 结论</h2>
+<p>总结下来，建议还是按ATM来对冲，那按Delta还是面值来对冲？本质取决于你是否需要short Delta，也即以2.5%的成本来换取下跌时候的收益。 做Alpha的话，有必要short delta吗？</p>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/Derivatives/Short-Gamma/short-gamma/">理解Short Gamma策略</a></span>
+  <span class="nav-next"><a href="/Derivatives/Option-Margin-Analysis/option-margin-analysis/">Option Margin Analysis</a> &rarr;</span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+

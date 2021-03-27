@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on cq</title>
+    <link>https://chenqian.ink/</link>
+    <description>Recent content in Home on cq</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenqian.ink/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>黄金投资逻辑笔记</title>
+      <link>https://chenqian.ink/GMA/%E9%BB%84%E9%87%91%E6%8A%95%E8%B5%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/gold-investment/</link>
+      <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/GMA/%E9%BB%84%E9%87%91%E6%8A%95%E8%B5%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/gold-investment/</guid>
+      <description>近日聊天，随着全球央行大放水背景下，美国10年国债和大宗商品大幅上行，大家都在更忧心通货膨胀对财富的侵蚀。首当其冲想到的是买黄金。所以周末梳理下，黄金的主要驱动逻辑，看看当下黄金是不是性价比高的投资品种。我们谈定价和投资驱动，起点逻辑是供需，只是大部分商品影响供需的因素太过庞杂。黄金供需结构还好，最复杂的是石油。
+1. 供需结构供应端：稳定、分散年供应4500吨左右，成本在1000美元/盎司以下，10几年稳定不变；（1/4回收，3/4开采）供应分散，产量前三国家（中、俄、澳）占30%；需求端：总需求稳定，次贷危机之前，全球黄金需求中枢在900吨左右，之后在1100吨左右，主要增加在投资需求上；金饰消费需求+黄金投资需求占90%（含央行及机构12%左右），科技工业产品用金10%（相当稳定，每季90吨不到）；消费和投资需求此消彼长，影响金价行情，因为首饰可以回卖，本质还是投资需求影响金价。2. 定价逻辑那什么影响金价的投资需求呢？也就是金融属性呢？
+大家谈起通货膨胀的时候，就开始投资黄金，本质是担心物价上涨，储蓄贬值，购买力下降。但是贬值是个相对概念，只有当储蓄收益率跑不赢物价上涨幅度的时候，才会贬值。我们一般把储蓄收益率称作名义利率（国内存款市场未市场化，银行活期和定期存款不能反映真实名义利率），那是否能跑赢物价上涨的幅度，就是实际利率了。\[R_{实际}=R_{名义}-f_{预期通胀率}\]这是大家普遍见惯了的费雪恒等式，至于它为啥成立以及成立条件我们以后再说。实际利率是驱动黄金价格的核心逻辑，过去15年黄金和实际利率基本呈镜像。
+3. 投资逻辑黄金的高性价比交易时期是：名义利率与通胀预期非同步变化的时候。虽然大部分按经济自主运行，两者是同步关系。但是存在央行，主张逆周期调节，开展货币政策操作，就会产生交易胜率高的机会。但是这种机会很难得，可遇不可求，适合下重注。
+2007下半年到2008年一季度：由于次贷危机，美联储连续下调联邦基金利率，受短端利率和经济前景影响，10年国债利率迅速下行。但是此时油价还在继续攀升，期间上涨了50%。通胀预期仍然保持在2.35%左右的水平不变。实际利率快速下行，黄金期间涨幅也有40%多；2012年9月到2013年底，美联储开启第三轮量化宽松，幅度比第二次大。经济呈现明显复苏迹象，长端利率快速上行，黄金面临剧烈调整，跌幅近30%。2020年3月到2020年8月底：这段大家就比较熟悉了，美联储前所未有扩表，通胀预期快速提升，但美国疫情持续未见好转，名义利率持续低于1%以下。实际利率持续下行，黄金迎来近30%涨幅。如果按期货杠杆比例（4%最低交易保证金）的话，收益还是相当可观的。4. 当前情况4.1 当前实际利率水平当前黄金是否具备投资性价比，实际上是对实际利率未来走势判断了。近期10年美债收益率连续走高，引发全球过度上涨风险资产（BTC除外）回调。其中实际利率也有一定程度上扬，但是通胀预期已经回到了疫情前水平了，如果实际利率水平要提升，那才刚刚开始。
+4.2 仓位与技术面CFTC（美国商品期货交易委员会）每周报告各期货品种持仓情况。当前黄金在历史性拥挤净多头仓位基础上有所下降，但仍处较高水平。
+5. 结论所以当下，个人机械地感觉并不是投资黄金的高性价比的机会。我们不能通过名义利率和通胀预期，然后来推断实际利率走势。更不是简单按图表历史趋势来推断。实际利率到底是个啥？咋计算的，主要受啥影响，这些才决定走势。而这些问题我不知道我能不能从本质上来回答，因为它太难了。如此文，如何在美债收益率问题上搞垮研究者。
+</description>
+    </item>
+    
+    <item>
+      <title>晨星基金评级方法介绍</title>
+      <link>https://chenqian.ink/FOF/%E6%99%A8%E6%98%9F%E5%9F%BA%E9%87%91%E8%AF%84%E7%BA%A7%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D/morning-star/</link>
+      <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/FOF/%E6%99%A8%E6%98%9F%E5%9F%BA%E9%87%91%E8%AF%84%E7%BA%A7%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D/morning-star/</guid>
+      <description>晨星介绍晨星是一家美国基金评级机构，从1985年开始首次推出基金评级业务，是全球从事基金评级业务的唯一一家上市公司。目前，在全球29个国家设有业务，在资产管理行业具有一定影响力。
+当前，国内推出基金评级主要是晨星资讯、天相投顾、济安金信、Wind基金评级以及以上海证券、银河证券为代表的券商团队。当然这种第三方业务，买方或者纯粹第三方做的一般比卖方好。
+晨星评级作基金评价，核心在解决以下几个问题：
+拿什么量化风险？对收益如何作风险调整？绝对评级还是相对评级，也就是跟谁比的问题；除单位净值外，是否引入以及哪些其他因子。每家解决这个问题的思路不同，得出的评价结果也就不同。
+晨星对有三年及以上业绩数据的开放式基金提供评级服务。主要评级思路是：
+对基金分类，就是解决跟谁比的问题；衡量基金的收益；基于效用函数，计算风险调整后收益MRAR；按MRAR值，对不同类别的基金分别进行评级，划分为5个星级。晨星星级评价是单纯以过往业绩为基础的，未引入其他因素。
+1. 晨星分类晨星对基金分类不简单依赖于公墓基金规定的分类标准，其分类主要思路：
+股票投资比例\(\ge\) 70%：特定行业投资比例\(\ge\) 50%，特定行业分类，现在覆盖医药，科技通讯类、消费类、金融地产类；不足50%的，股票型和激进配置型；固收类投资比例\(\ge\) 70%：股票\(\ge\) 10%，激进债券型；股票\(\le\) 10%，普通债券型；不投资转债和可转债，纯债基金；短债基金，纯债，组合久期小于3年；股票类比例和固收类比例在上述阈值之间：股票\(\le\) 70%，固收\(\le\) 50%，标准混合型；固收\(\ge\) 50%，保守混合型；其他，灵活配置型转债投资比例\(\ge\) 70%，股票类\(\le\) 20%， 可转债基金；香港等特定市场投资比例\(\ge\) 70%，香港股票基金；其他不纳入评级范围的分类，如货币市场基金、另类中性策略，商品以及其他类型。晨星对分类足够细，好处是评价结果跟谁比而言，足够精准。但是这导致一种结果是四、五星基金太多了，还是让投资者茫然。
+2. 衡量基金收益月度回报率来衡量基金收益，考虑分红和份额拆分的影响。也即复权单位净值收益率。\[TR=\frac{月末复权单位净值}{上月末复权单位净值}-1\]
+3.</description>
+    </item>
+    
+    <item>
+      <title>Git常见命令备忘</title>
+      <link>https://chenqian.ink/Gazebo/git-code/</link>
+      <pubDate>Thu, 11 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Gazebo/git-code/</guid>
+      <description>1. Git 是什么 Git 是用来作版本控制的，类似于解决跟小伙伴一起协作的Word文档，00版，01版……99版。Git怎么解决这个问题的呢？
+ 远程库：设立在Github上； 本地库：本地电脑的某个文件夹； 创建Git语言：  本地库和远程库的上下相互，支持多人； 自动记录所有的更改版本，并注明几页几行进行了修改； 支持回退到某个版本； 要求在提交新版本时，同时提交版本变动的梗概信息，方便他人协作。   免费，开源。  2. Git常见代码 创建本地库，在文件夹右击，Git Bash Here
+git init把某个文件上传到本地库的缓存区
+git add &amp;lt;某个文件名&amp;gt; # 添加单个文件git add . # 添加所有文件让Git意识到内容更新
+git commit -m &amp;quot;此版本修改梗概说明&amp;quot;创建远程库，注册Github，建立一个repository，Github会给出这个远程库地址。
+git remote add origin &amp;quot;https://homepage/chenqian.git&amp;quot; # 跟远程库建立联系把文件夹推送到远程库
+git push origin master从远程库到本地库
+git clone &amp;quot;https://homepage/chenqian.git&amp;quot;3. Git 非常见代码备忘 涉及SSL证书错误问题
+git config --global http.sslVerify &amp;quot;false&amp;quot;涉及ref error
+git pull –-rebase origin master以上，供备忘。</description>
+    </item>
+    
+    <item>
+      <title>Yields and Curves in Fixed Income Market</title>
+      <link>https://chenqian.ink/FICC/Yields-and-Curves-in-Fixed-Income-Market/yields-and-curves-in-fixed-income-market/</link>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/FICC/Yields-and-Curves-in-Fixed-Income-Market/yields-and-curves-in-fixed-income-market/</guid>
+      <description>当前信息以及预期会price in 在市场交易品种之中。人们需要构建一些指标，综合各类市场数据，反应总体price in 的情况。比如权益类市场的大盘指数，以及固定收益市场的利率。
+1. YTM现券有不同期限和票息，综合其信息不能用价格本身，需要用 \(YTM\). 为表达简便，假设只有2期现金流：\[\{y|P=\frac{C}{1+y}+\frac{C+100}{(1+y)^2}\}\]用每天的现券价格数据，按剩余期限排列，剔除不合理报价，能得到一串不规则时间序列的 \(YTM\)。通过各类插值技术，可以得到关键期限\(y_1,y_2 \dots y_n\)，并形成 \(YTM\) Curve，这是外汇交易中心（CFETS）的做法。也有只保留关键期限附近的样本，在通过插值技术计算出其他期限的方法，比如中债。具体可见《债券收益率曲线的编制》来自于公众号 金学智库。
+2. Spot rate把公式 (1) 两边乘以\((1+y)^2\)\[C(1+y)+C+100=P(1+y)^2\]\(YTM\) 暗含了利息再投资收益率也是\(y\)，这不太合适。因此，我们需要用不同期限的\(y\)，来计算出实际的再投资收益率。计算实际再投资收益率之前，需要知道spot rate。采用Bootstrap的方法：\[1=\frac{1+y_1}{1+r_1}\]
+\[1=\frac{y_2}{1+r_1} + \frac{1+y_2}{(1+r_2)^2}\]
+以此类推，就可以算出 \(r_3, r_4 \dots r_n\), 也就形成了spot curve. 你再看某个资产的再投资收益率，就是期限结构真实反映的再投资收益率了，\[P(1+r_2)^2=C\frac{(1+r_2)^2}{1+r_1}+C+100\]所以，spot rate适合用来定价。
+3. Forward rate上式中的 \(\frac{(1+r_2)^2}{1+r_1}-1\)，就是时间1到时间2的利率\(r_{12}\)，也即远期利率。站在当前时点来看，1块钱存两年，应该等于1块钱存1年，然后取出来再存一年。\[1\times(1+r_2)^2=1\times(1+r_1)\times(1+r_{12})\]根据spot rate，可以求出\(r_{12},r_{13},\dots r_{1n}\), 这是一类Forward curve，表示1年之后的spot curve，当然你也可以2年之后的spot curve，这些都只包含了当前对未来预期的信息。如果你的预期与市场交易出来的forward curve 不一致，那你就可以交易它。</description>
+    </item>
+    
+    <item>
+      <title>分红与衍生品</title>
+      <link>https://chenqian.ink/Derivatives/Dividend-and-Derivatives/dividend-and-derivatives/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Derivatives/Dividend-and-Derivatives/dividend-and-derivatives/</guid>
+      <description>股票作为权益性资产，是可以参与分红的。而衍生品作为一项义务或者权利合约，本身不参与分红。因此分红事件会对衍生品定价产生影响。当然这种影响可以通过制度设计予以规避。
+1. 标的分红股票分红相对清楚，在公告日\(T_0\)知悉，将在\(T\)日对标的资产除息，并于若干日后支付红利\(D\)。如无其他因素影响，\[S^{开盘}_{T}=S^{收盘}_{T-1}-D\]每只股票分红都会反应在价格里，影响市值，从而每次分红都会影响股票价格指数，特别是大权重股。而ETF基金，则对当年所有分红累积，集中一次作利润分配，也即ETF分红，比如2020年11月11日，上证50公告每份分红0.051，并于同月30日除息。
+2. 对期货的影响期货通过构建无风险套利组合来定价的。分红期在\(T\)内，
+时间\(T_0=0\)\(T_1\)\(T_2\)……\(T\)交易1借\(S_0\)现金，买入现货并持有分红\(D_1\)分红\(D_2\)归还借款及利息\(S_0e^{rt}\)交易2以\(F_0\)价格空头进入期货合约用持有的现券，以\(F_0\)价格了结合约净现金流0\(D_1\)\(D_2\)\(F_0-S_0e^{rT}\)按无风险套利原则，\[F_0=S_0e^{rT}-D_1e^{r(T-T_1)}-D_2e^{r(T-T_2)} \\=(S_0-D_1e^{-rT_1}-D_2e^{-rT_2})e^{rT}\]
+如果基差 \(b=S-F\)，没有分红的,理论基差 \(b=S（1-e^{rT})\)；
+有分红，理论基差\[b=S(1-e^{rT})+D_1 e^{r(T-T_1)}+D_2 e^{r(T-T_2)}\]
+可以看出，分红如果在期货到期之前，是会影响期货定价以及基差的。像国内上市公司，分红期一般集中在5、6、7和8月份（上证50一般在后三个月）。如果你在4月份，观察当季和下季合约升贴水幅度，就是假的，是包含红利影响的。如果你不知道这回事，按假的贴水幅度，做跨期套利交易和风险管理，那是会吃亏的。
+那如何计算刨除红利影响的真实升贴水幅度呢（大佬教的）：
+自己估计红利。用Wind取出成分股和权重，3年平均股利支付率和券商一致预测净利润，算出分红总额，按权重推算对指数的影响；用指数期权来估计，但是目前只支持沪深300指数（下文会论及）。3.</description>
+    </item>
+    
+    <item>
+      <title>Option Margin Analysis</title>
+      <link>https://chenqian.ink/Derivatives/Option-Margin-Analysis/option-margin-analysis/</link>
+      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Derivatives/Option-Margin-Analysis/option-margin-analysis/</guid>
+      <description>这篇短文，主要理解期权保证金公式，以及研究下保证金风险度变化规律，方便盯市。
+1. 定义交易所ETF期权公式定义：
+看涨期权\[c+max\{12\% S-max\{K-S,\quad 0\},\quad 7\%S \}\]看跌期权\[min\{p+max\{12\% S-max\{S-K,\quad 0\},\quad 7\%K \}, \quad K\}\]
+虽然公式看起来很复杂，其实是按合约不同的虚实状态来计算的，覆盖2交易日的波动。从图形上来看更明显：
+大抵可以看出斜率分三个阶段：
+\(S&amp;lt;\frac{K}{1.05}\),深度虚值状态：Margin=\((0.07+\delta)S\)
+\(\frac{K}{1.05}&amp;lt;S&amp;lt;K\),浅度虚值状态：Margin=\((1.12+\delta)S-K\)
+\(S&amp;gt;K\),实值状态：\((0.12+\delta)S\)\(delta\)也在逐步变大。在转向实值阶段，收取保证金的速度最大，保证金比率变化最快。
+看跌期权类似
+卖跨呢？
+卖跨在平值时占用较高，但往往是在平值处开仓，留有一定保证金空间。所以卖跨更关心行情大幅波动（\(\pm5\%\)）后的保证金占用。
+2. 保证金比率对保证金风险度的影响更重要，因为可能会爆仓。所以关心的是，当标的价格波动0.1%时，保证金比率会变化多少。这对现实盯市实践有较大意义。
+假设当日无操作，保证金账户余额不变, \(k_0\)为初始保证金风险度。
+\[Initial \quad Margin \quad ratio =\frac{Margin}{Cash+Margin}=k_0\]
+当S上涨幅度为r时，计算call的保证金风险率\(k\)变动：
+\(S&amp;lt;\frac{K}{1.05}\),深度虚值状态\[M_0=(0.07+\delta_0)S\]\[\Delta k=\frac{(0.07+\delta)(1+r)S - (0.07+\delta_0)S}{M_0/k_0}\]\[=k_0\frac{0.07*r+(1+r)\delta-\delta_0}{0.07+\delta_0}\]
+\(\frac{K}{1.05}&amp;lt;S&amp;lt;K\),浅度虚值状态\[M_0=(1.12+\delta)S-K\]\[\Delta k=k_0\frac{[1.12*r+(1+r)\delta-\delta_0]S}{(1.12+\delta_0)S-K}\]此阶段\(\Delta k\)公式是直接跟S和K相关的，但是关系大吗？应该还好，S和K偏离不超过5%，\(\Delta k\)取倒数可以观察出来。
+\(S&amp;gt;K\),实值状态：
+\[M_0=(0.12+\delta_0)S\]
+\[\Delta k=k_0\frac{0.12*r+(1+r)\delta-\delta_0}{0.12+\delta_0}\]
+结合图来看一下，涉图期权参数为：\(call: \quad \sigma=17.</description>
+    </item>
+    
+    <item>
+      <title>如何用Option对冲现货</title>
+      <link>https://chenqian.ink/Derivatives/%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%9F%E6%9D%83%E5%AF%B9%E5%86%B2%E7%8E%B0%E8%B4%A7/hedge-portfolio-using-option/</link>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Derivatives/%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%9F%E6%9D%83%E5%AF%B9%E5%86%B2%E7%8E%B0%E8%B4%A7/hedge-portfolio-using-option/</guid>
+      <description>考虑采用期权对冲组合Beta，构造Alpha策略。先从指数ETF组合考虑起，因为就相差Alpha收益。
+假设当前指数ETF价格为I，看跌期权价值为p，其中\(p=max\{K-I, 0\} + T\), T代表时间价值，可以小于0，但是不可能与\(K&amp;lt;I\)同时发生。
+Part1 Delta对冲先按Delta对冲，k为对冲系数，\(k=1/\Delta\), 同时\(\Delta\)是\(max\{K-I, 0\}\)的增函数。
+1. 构建对冲价值变化进入对冲时，组合价值为
+\[P_t=I + k\times \{max(K-I, 0) + T\}\]考虑期权到期,时间价值为0，经过\(\Delta t\), 组合价值\[P_T=I+\Delta I + k\times max(K-I-\Delta I, 0)\]
+价值变化量为\[\Delta P=\Delta I + k\times \{max(K-I-\Delta I, 0) - \{max(K-I, 0) + T\}\}\]
+2. 具体情况讨论看起来很复杂，我们分情况讨论。
+2.1 预测未来上涨选择平值期权，K-I=0, \(\Delta=0.5\)\[\frac{\Delta P}{P}=\frac{\Delta I}{I}-\frac{2T}{I}\]
+选择深度实值期权，\(\Delta=1\)
+上涨幅度没有超过实值程度，\(\Delta I &amp;lt; (K-I)\)\[\frac{\Delta P}{P}= -\frac{T}{I}\]上涨幅度超过实值程度，\(\Delta I &amp;gt; (K-I)\)\[\frac{\Delta P}{P}=\frac{\Delta I-(K-I)-T}{I}\]如果选择深度实值合约，资金占用会较多(\(\frac{K-I+T}{I}\)),但时间价值会小于0,对冲层面到期始终会盈利。2.</description>
+    </item>
+    
+    <item>
+      <title>理解Short Gamma策略</title>
+      <link>https://chenqian.ink/Derivatives/Short-Gamma/short-gamma/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Derivatives/Short-Gamma/short-gamma/</guid>
+      <description>在群里扔过这样一个问题。当时我也不知道怎么回答：
+Delta对冲组合Theta是10000，当前的IV是32。第二天开盘跳开3个点，行情没再动直接收盘，IV没动，问组合当天的盈亏是多少钱？
+刚开始完全无从下手。想着算盈亏，必然跟期权组合的PnL公式有关。\[ \Delta PnL=\delta \Delta S + \frac{1}{2}\Gamma (\Delta S)^2 + \theta\Delta t + \nu \Delta \sigma\]其中\(\delta\)已对冲，IV没动所以\(\Delta \sigma =0\)。重点考察中间两项，
+\[\Gamma=\frac{N^{&amp;#39;}(d_1)}{S \sigma \sqrt{T}}\]
+\[\theta=-\frac{S_0 N^{&amp;#39;}(d_1)\sigma}{2\sqrt{T}}-rKe^{-rT}N(d_2)\]因为\(r\)和\(N(d_2)\)很小，近似忽略\(\theta\)后半部分。将\(\Gamma\)换成\(\theta\)的表达式并化简，\[\Delta PnL=\theta\Delta t [1-\frac{(\Delta S/S)^2}{\sigma^2 \Delta t}]\]这也就解决了上面提出的问题。唯一需要注意的细节就是一年按365，还是按252或者256来算。
+回答完问题之后，再回过头来想想。其实题目和\(\Delta PnL\)最终的形式，是在告诉我们\(\Gamma\)收益和\(\theta\)收益是可以相互转化成波动率形式的。那不妨，用\(\Gamma\)来表示下损益：\[\Delta PnL=\frac{1}{2}\Gamma S^2 [(\frac{\Delta S}{S\sqrt{\Delta t}})^2-\sigma^2]\Delta t\]如果说\(\Delta PnL\)可以理解为瞬时损益的话，那右边是个啥？
+先来看\((\frac{\Delta S}{S\sqrt{\Delta t}})^2\)，可看作\(\Delta t\)时间内标的资产收益率的真实方差，如果从过去展望未来的话，就叫做RV。\(\sigma^2\)恰是计算上述希腊字母时使用的收益率，一般使用IV，代表你price in的成本。
+所以说，期权组合损益是跟未来实际波动率与对未来波动率预期之间差值成比例关系的。你可以选择组合做多或者做空波动率，即称作波动率交易。而要最大化这种收益，构造的组合自然是使得Gamma最大，所以也叫long Gamma或者Short Gamma策略，也就是买跨或者卖跨。尤其经典的是卖跨策略。
+上面是让凤娟帮忙画的两幅图，可以看出无论是S&amp;amp;P500的VIX还是国内50ETF的IVIX指数，除剧烈波动期间，市场总是持续对波动率预期过高，反映在隐含波动率总是大于历史波动率。这才是short Gamma策略的内因。原因呢？比如杠杆成本，机构多头需要买保费等等，也不一定正确，大家可以多发散理解。
+注意单单看这个图的Volatility Spread还不够，因为是要未来的RV大于现在的IV才能盈利。所以本质还是波动率的均值回归属性，在震荡期，特别是波动率下行期才是Short Gamma的好时机，不仅能赚真实波动率的钱，还能赚Vega的钱。
+前面都是考虑瞬时损益，而总损益是对\(dt\)的积分：\[PnL=\int_{0}^{T}\frac{1}{2}\Gamma S^2 (RV^2-IV^2) dt\]</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://chenqian.ink/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/about/</guid>
+      <description>Life is short. Write for eternity.</description>
+    </item>
+    
+  </channel>
+</rss>

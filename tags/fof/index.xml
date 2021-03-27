@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fof on cq</title>
+    <link>https://chenqian.ink/tags/fof/</link>
+    <description>Recent content in fof on cq</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenqian.ink/tags/fof/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>晨星基金评级方法介绍</title>
+      <link>https://chenqian.ink/FOF/%E6%99%A8%E6%98%9F%E5%9F%BA%E9%87%91%E8%AF%84%E7%BA%A7%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D/morning-star/</link>
+      <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/FOF/%E6%99%A8%E6%98%9F%E5%9F%BA%E9%87%91%E8%AF%84%E7%BA%A7%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D/morning-star/</guid>
+      <description>晨星介绍晨星是一家美国基金评级机构，从1985年开始首次推出基金评级业务，是全球从事基金评级业务的唯一一家上市公司。目前，在全球29个国家设有业务，在资产管理行业具有一定影响力。
+当前，国内推出基金评级主要是晨星资讯、天相投顾、济安金信、Wind基金评级以及以上海证券、银河证券为代表的券商团队。当然这种第三方业务，买方或者纯粹第三方做的一般比卖方好。
+晨星评级作基金评价，核心在解决以下几个问题：
+拿什么量化风险？对收益如何作风险调整？绝对评级还是相对评级，也就是跟谁比的问题；除单位净值外，是否引入以及哪些其他因子。每家解决这个问题的思路不同，得出的评价结果也就不同。
+晨星对有三年及以上业绩数据的开放式基金提供评级服务。主要评级思路是：
+对基金分类，就是解决跟谁比的问题；衡量基金的收益；基于效用函数，计算风险调整后收益MRAR；按MRAR值，对不同类别的基金分别进行评级，划分为5个星级。晨星星级评价是单纯以过往业绩为基础的，未引入其他因素。
+1. 晨星分类晨星对基金分类不简单依赖于公墓基金规定的分类标准，其分类主要思路：
+股票投资比例\(\ge\) 70%：特定行业投资比例\(\ge\) 50%，特定行业分类，现在覆盖医药，科技通讯类、消费类、金融地产类；不足50%的，股票型和激进配置型；固收类投资比例\(\ge\) 70%：股票\(\ge\) 10%，激进债券型；股票\(\le\) 10%，普通债券型；不投资转债和可转债，纯债基金；短债基金，纯债，组合久期小于3年；股票类比例和固收类比例在上述阈值之间：股票\(\le\) 70%，固收\(\le\) 50%，标准混合型；固收\(\ge\) 50%，保守混合型；其他，灵活配置型转债投资比例\(\ge\) 70%，股票类\(\le\) 20%， 可转债基金；香港等特定市场投资比例\(\ge\) 70%，香港股票基金；其他不纳入评级范围的分类，如货币市场基金、另类中性策略，商品以及其他类型。晨星对分类足够细，好处是评价结果跟谁比而言，足够精准。但是这导致一种结果是四、五星基金太多了，还是让投资者茫然。
+2. 衡量基金收益月度回报率来衡量基金收益，考虑分红和份额拆分的影响。也即复权单位净值收益率。\[TR=\frac{月末复权单位净值}{上月末复权单位净值}-1\]
+3.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Yields and Curves in Fixed Income Market - cq</title>
+    <meta property="og:title" content="Yields and Curves in Fixed Income Market - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="当前信息以及预期会price in 在市场交易品种之中。人们需要构建一些指标，综合各类市场数据，反应总体price in 的情况。比如权益类市场的大盘指数，以及固定收益市场的利率。
+[&amp;hellip;] 现券有不同期限和票息，综合其信息不能用价格本身，需要用 \(YTM\). 为表达简便，假设只有2期现金流：\[ &amp;hellip;">
+      <meta property="og:description" content="当前信息以及预期会price in 在市场交易品种之中。人们需要构建一些指标，综合各类市场数据，反应总体price in 的情况。比如权益类市场的大盘指数，以及固定收益市场的利率。
+[&amp;hellip;] 现券有不同期限和票息，综合其信息不能用价格本身，需要用 \(YTM\). 为表达简便，假设只有2期现金流：\[ &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="FICC">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Yields and Curves in Fixed Income Market</h1>
+
+<h3>cq
+  /  2021-02-05</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>当前信息以及预期会price in 在市场交易品种之中。人们需要构建一些指标，综合各类市场数据，反应总体price in 的情况。比如权益类市场的大盘指数，以及固定收益市场的利率。</p>
+<div id="ytm" class="section level3">
+<h3>1. YTM</h3>
+<p>现券有不同期限和票息，综合其信息不能用价格本身，需要用 <span class="math inline">\(YTM\)</span>. 为表达简便，假设只有2期现金流：
+<span class="math display">\[
+\{y|P=\frac{C}{1+y}+\frac{C+100}{(1+y)^2}\}
+\]</span>
+用每天的现券价格数据，按剩余期限排列，剔除不合理报价，能得到一串不规则时间序列的 <span class="math inline">\(YTM\)</span>。通过各类插值技术，可以得到关键期限<span class="math inline">\(y_1,y_2 \dots y_n\)</span>，并形成 <span class="math inline">\(YTM\)</span> Curve，这是外汇交易中心（CFETS）的做法。也有只保留关键期限附近的样本，在通过插值技术计算出其他期限的方法，比如中债。具体可见《债券收益率曲线的编制》来自于公众号 <strong>金学智库</strong>。</p>
+</div>
+<div id="spot-rate" class="section level3">
+<h3>2. Spot rate</h3>
+<p>把公式 (1) 两边乘以<span class="math inline">\((1+y)^2\)</span>
+<span class="math display">\[
+C(1+y)+C+100=P(1+y)^2
+\]</span>
+<span class="math inline">\(YTM\)</span> 暗含了利息再投资收益率也是<span class="math inline">\(y\)</span>，这不太合适。因此，我们需要用不同期限的<span class="math inline">\(y\)</span>，来计算出实际的再投资收益率。计算实际再投资收益率之前，需要知道spot rate。采用Bootstrap的方法：
+<span class="math display">\[
+1=\frac{1+y_1}{1+r_1}
+\]</span></p>
+<p><span class="math display">\[
+1=\frac{y_2}{1+r_1} + \frac{1+y_2}{(1+r_2)^2}
+\]</span></p>
+<p>以此类推，就可以算出 <span class="math inline">\(r_3, r_4 \dots r_n\)</span>, 也就形成了spot curve. 你再看某个资产的再投资收益率，就是期限结构真实反映的再投资收益率了，
+<span class="math display">\[
+P(1+r_2)^2=C\frac{(1+r_2)^2}{1+r_1}+C+100
+\]</span>
+所以，spot rate适合用来定价。</p>
+</div>
+<div id="forward-rate" class="section level3">
+<h3>3. Forward rate</h3>
+<p>上式中的 <span class="math inline">\(\frac{(1+r_2)^2}{1+r_1}-1\)</span>，就是时间1到时间2的利率<span class="math inline">\(r_{12}\)</span>，也即远期利率。站在当前时点来看，1块钱存两年，应该等于1块钱存1年，然后取出来再存一年。
+<span class="math display">\[
+1\times(1+r_2)^2=1\times(1+r_1)\times(1+r_{12})
+\]</span>
+根据spot rate，可以求出<span class="math inline">\(r_{12},r_{13},\dots r_{1n}\)</span>, 这是一类Forward curve，表示1年之后的spot curve，当然你也可以2年之后的spot curve，这些都只包含了当前对未来预期的信息。如果你的预期与市场交易出来的forward curve 不一致，那你就可以交易它。</p>
+<p>同时，也可以求出<span class="math inline">\(r_{12},r_{23},\dots r_{(n-1)n}\)</span>，表示未来不同时期的1年即期利率。</p>
+<p>这两类Forward curve在中债都提供，可以通过n和k两个参数控制你想要上述哪一条curve。</p>
+<p>在有了第一条forward curve之后，也就可以计算forward YTM, 两者是可以互相推导的。
+<span class="math display">\[
+1=\frac{1+y_{12}}{1+r_{12}}
+\]</span></p>
+<p><span class="math display">\[
+1=\frac{y_{13}}{1+r_{12}} + \frac{1+y_{13}}{(1+r_{13})^2}
+\]</span></p>
+<p>就可以得到远期利率的到期收益率曲线。</p>
+</div>
+<div id="par-rate" class="section level3">
+<h3>4. Par rate</h3>
+<p>如果不太理解公式 (4)和公式 (8)。是因为有
+<span class="math display">\[
+1=\frac{c}{1+r_1}+\frac{1+c}{(1+r_2)^2}=\frac{c}{1+c}+\frac{1+c}{(1+c)^2}
+\]</span>
+使得左半部分成立的 <span class="math inline">\(c\)</span> 称作par rate。右半部分等于1是天然成立的。这样比较看下来，par rate 有点像是spot rate 的平均。为什么要有par rate， 可以用来做一级发行的Coupon定价。</p>
+</div>
+<div id="swap-rate" class="section level3">
+<h3>5. Swap rate</h3>
+<div id="swap-rate-1" class="section level4">
+<h4>5.1 Swap rate</h4>
+<p>发现没有，整个链条下来，这些都是从市场的bonds中获取得到的利率期限结构。能不能纯粹一点，从市场交易的利率里面得到利率呢？有，Swap。固定现金流交换浮动现金流，Swap rate 可以理解为对未来一定期限浮动利率的预期，反应在远期利率上。</p>
+<p>为了更好的理解Swap rate，我们不妨回到历史的第一笔互换定价，这时候没有Swap curve，对方提出要约，你采用债券交易出来的Spot Curve定价？</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Time</th>
+<th align="center">Spot Rate</th>
+<th align="center">Forward Rate</th>
+<th align="center">Fixed CF</th>
+<th align="center">Floating CF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(r_1\)</span></td>
+<td align="center">—-</td>
+<td align="center"><span class="math inline">\(r\)</span></td>
+<td align="center"><span class="math inline">\(r_1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center"><span class="math inline">\(r_2\)</span></td>
+<td align="center"><span class="math inline">\(r_{12}=\frac{(1+r_2)^2}{1+r_1}-1\)</span></td>
+<td align="center"><span class="math inline">\(r\)</span></td>
+<td align="center"><span class="math inline">\(r_{12}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>初始互换时，肯定是双方都不能吃亏，互换价格为0。也即固定端和浮动端的现金流现值应该一致：
+<span class="math display">\[
+\frac{r}{1+r_1}+\frac{r}{(1+r_2)^2}=\frac{r_1}{1+r_1}+\frac{r_{12}}{(1+r_2)^2}
+\]</span>
+把<span class="math inline">\(r_{12}=\frac{(1+r_2)^2}{1+r_1}-1\)</span> 代入可以求出固定端的利率<span class="math inline">\(r\)</span>。这个<span class="math inline">\(r\)</span>是什么呢？回头看看这个方程。
+<span class="math display">\[
+1=\frac{c}{1+r_1}+\frac{1+c}{(1+r_2)^2}
+\]</span>
+可以证明，<span class="math inline">\(c=r\)</span>。也就是说，Swap rate 就是当前给定期限结构的Par rate。</p>
+</div>
+<div id="swap-curve" class="section level4">
+<h4>5.2 Swap Curve</h4>
+<p>互换市场逐步成熟，交易出来了不同期限的Swap rate，那就有人不同意采用债券交易出来的Curve来定价了，是时候考虑采用Swap Curve。</p>
+<p>CFETS通过交易量靠前（Top30）的机构报价（剔除4个最高和最低）平均，给出的Swap利率曲线结构（12:10 定盘和16:40收盘），包含报买，报卖两条线。当前市场主流还是FR007（75%）和Shibor-3M（15%）这两个品种，年限也集中在0.5年,1年和5年。</p>
+<p>其他关键年限的互换利率是CFETS通过线性插值得来的，这也难免影响互换利率曲线的纯粹性（所以各家机构采用的spot curve也会不一样）。</p>
+<p>有了Swap Curve，可以通过式 (4) 和 式 (6) 得到Swap 的spot curve 和 forward curve。这些CFETS也会公布，Wind用YC快捷键可取。</p>
+</div>
+</div>
+<div id="summary" class="section level3">
+<h3>6. Summary</h3>
+<ul>
+<li>Swap定价的另外两种方法，债券价格法和重构互换法，其实本质还是式子（10）的变形。比如，把左右加上本金的贴现就是债券价格法，同时把右边又可以看成一个新互换，就是重构Swap法了。</li>
+<li>整体行文脉络，是按个人理解框架层层递进。从债券数据到互换数据，再到各类rate，中间可以相互推导。</li>
+<li>为行文简便，<span class="math inline">\(T_0\)</span>都是关键期限的末尾，如果考虑给首期非规则的互换或者债券定价，需要考虑应计利息和再贴现，具体可见参考文献第二篇。</li>
+<li>市场对货币政策预期，利率敏感，可能最先反应在利率互换上。</li>
+<li>以此梳理为记。</li>
+</ul>
+<div id="参考文献" class="section level4">
+<h4>参考文献</h4>
+<p><a href="https://www.cnblogs.com/xuruilong100/p/9788606.html">1. 利率互换估值的实现</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI1NDUyMTY5Ng==&amp;mid=2247485009&amp;idx=1&amp;sn=87b1d5eec661d34db4d8ab537dff0cdd&amp;chksm=e9c2be5edeb5374845c5b6d83a193bd2ff66c385cd0ef847f930fa71d16231dbe6b22a7cc408&amp;scene=178&amp;cur_album_id=1364392451619897345#rd">2.利率互换IRS的估值</a></p>
+</div>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev"></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+

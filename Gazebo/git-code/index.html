@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Git常见命令备忘 - cq</title>
+    <meta property="og:title" content="Git常见命令备忘 - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="Git 是用来作版本控制的，类似于解决跟小伙伴一起协作的Word文档，00版，01版……99版。Git怎么解决这个问题的呢？
+[&amp;hellip;] 创建本地库，在文件夹右击，Git Bash Here
+git init把某个文件上传到本地库的缓存区
+git add &amp;lt;某个文件名&amp;gt; # 添加单个文件git add . # 添加所有文件让Git意识到内容更新
+git commit &amp;hellip;">
+      <meta property="og:description" content="Git 是用来作版本控制的，类似于解决跟小伙伴一起协作的Word文档，00版，01版……99版。Git怎么解决这个问题的呢？
+[&amp;hellip;] 创建本地库，在文件夹右击，Git Bash Here
+git init把某个文件上传到本地库的缓存区
+git add &amp;lt;某个文件名&amp;gt; # 添加单个文件git add . # 添加所有文件让Git意识到内容更新
+git commit &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="Gazebo">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Git常见命令备忘</h1>
+
+<h3>cq
+  /  2021-03-11</h3>
+<hr>
+
+
+      </header>
+
+
+
+<h3 id="1-git-是什么">1. Git 是什么</h3>
+<p>Git 是用来作版本控制的，类似于解决跟小伙伴一起协作的Word文档，00版，01版……99版。Git怎么解决这个问题的呢？</p>
+<ul>
+<li>远程库：设立在Github上；</li>
+<li>本地库：本地电脑的某个文件夹；</li>
+<li>创建Git语言：
+<ul>
+<li>本地库和远程库的上下相互，支持多人；</li>
+<li>自动记录所有的更改版本，并注明几页几行进行了修改；</li>
+<li>支持回退到某个版本；</li>
+<li>要求在提交新版本时，同时提交版本变动的梗概信息，方便他人协作。</li>
+</ul>
+</li>
+<li>免费，开源。</li>
+</ul>
+<h3 id="2-git常见代码">2. Git常见代码</h3>
+<p>创建本地库，在文件夹右击，Git Bash Here</p>
+<pre><code>git init
+</code></pre><p>把某个文件上传到本地库的缓存区</p>
+<pre><code>git add &lt;某个文件名&gt;  # 添加单个文件
+git add .  # 添加所有文件
+</code></pre><p>让Git意识到内容更新</p>
+<pre><code>git commit -m &quot;此版本修改梗概说明&quot;
+</code></pre><p>创建远程库，注册Github，建立一个repository，Github会给出这个远程库地址。</p>
+<pre><code>git remote add origin &quot;https://homepage/chenqian.git&quot; # 跟远程库建立联系
+</code></pre><p>把文件夹推送到远程库</p>
+<pre><code>git push origin master
+</code></pre><p>从远程库到本地库</p>
+<pre><code>git clone &quot;https://homepage/chenqian.git&quot;
+</code></pre><h3 id="3-git-非常见代码备忘">3. Git 非常见代码备忘</h3>
+<p>涉及SSL证书错误问题</p>
+<pre><code>git config --global http.sslVerify &quot;false&quot;
+</code></pre><p>涉及ref error</p>
+<pre><code>git pull –-rebase origin master
+</code></pre><p>以上，供备忘。</p>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev"></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+

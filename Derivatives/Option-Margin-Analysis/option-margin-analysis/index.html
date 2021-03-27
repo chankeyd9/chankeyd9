@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Option Margin Analysis - cq</title>
+    <meta property="og:title" content="Option Margin Analysis - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="这篇短文，主要理解期权保证金公式，以及研究下保证金风险度变化规律，方便盯市。
+[&amp;hellip;] 交易所ETF期权公式定义：
+看涨期权\[c&#43;max\{12\% S-max\{K-S,\quad 0\},\quad 7\%S \}\]看跌期权\[min\{p&#43;max\{12\% S-max\{S-K,\quad 0\},\quad 7\%K \}, \quad K\}\]
+虽然公式看起来很 &amp;hellip;">
+      <meta property="og:description" content="这篇短文，主要理解期权保证金公式，以及研究下保证金风险度变化规律，方便盯市。
+[&amp;hellip;] 交易所ETF期权公式定义：
+看涨期权\[c&#43;max\{12\% S-max\{K-S,\quad 0\},\quad 7\%S \}\]看跌期权\[min\{p&#43;max\{12\% S-max\{S-K,\quad 0\},\quad 7\%K \}, \quad K\}\]
+虽然公式看起来很 &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="Derivatives">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Option Margin Analysis</h1>
+
+<h3>cq
+  /  2020-11-30</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+<script src="Option Margin Analysis_files/header-attrs/header-attrs.js"></script>
+
+
+<p>这篇短文，主要理解期权保证金公式，以及研究下保证金风险度变化规律，方便盯市。</p>
+<div id="定义" class="section level3">
+<h3>1. 定义</h3>
+<p>交易所ETF期权公式定义：</p>
+<p>看涨期权
+<span class="math display">\[c+max\{12\% S-max\{K-S,\quad 0\},\quad 7\%S \}\]</span>
+看跌期权
+<span class="math display">\[min\{p+max\{12\% S-max\{S-K,\quad 0\},\quad 7\%K \}, \quad K\}\]</span></p>
+<p>虽然公式看起来很复杂，其实是按合约不同的虚实状态来计算的，覆盖2交易日的波动。从图形上来看更明显：</p>
+<p><img src="/Derivatives/Option Margin Analysis/Option%20Margin%20Analysis_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>大抵可以看出斜率分三个阶段：</p>
+<ul>
+<li><span class="math inline">\(S&lt;\frac{K}{1.05}\)</span>,深度虚值状态：Margin=<span class="math inline">\((0.07+\delta)S\)</span><br />
+</li>
+<li><span class="math inline">\(\frac{K}{1.05}&lt;S&lt;K\)</span>,浅度虚值状态：Margin=<span class="math inline">\((1.12+\delta)S-K\)</span><br />
+</li>
+<li><span class="math inline">\(S&gt;K\)</span>,实值状态：<span class="math inline">\((0.12+\delta)S\)</span></li>
+</ul>
+<p><span class="math inline">\(delta\)</span>也在逐步变大。在转向实值阶段，收取保证金的速度最大，保证金比率变化最快。</p>
+<p>看跌期权类似</p>
+<p><img src="/Derivatives/Option Margin Analysis/Option%20Margin%20Analysis_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>卖跨呢？</p>
+<p><img src="/Derivatives/Option Margin Analysis/Option%20Margin%20Analysis_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>卖跨在平值时占用较高，但往往是在平值处开仓，留有一定保证金空间。所以卖跨更关心行情大幅波动（<span class="math inline">\(\pm5\%\)</span>）后的保证金占用。</p>
+</div>
+<div id="保证金比率" class="section level3">
+<h3>2. 保证金比率</h3>
+<p>对保证金风险度的影响更重要，因为可能会爆仓。所以关心的是，当标的价格波动0.1%时，保证金比率会变化多少。这对现实盯市实践有较大意义。</p>
+<p>假设当日无操作，保证金账户余额不变, <span class="math inline">\(k_0\)</span>为初始保证金风险度。</p>
+<p><span class="math display">\[Initial \quad Margin \quad ratio =\frac{Margin}{Cash+Margin}=k_0\]</span></p>
+<p>当S上涨幅度为r时，计算call的保证金风险率<span class="math inline">\(k\)</span>变动：</p>
+<ul>
+<li><p><span class="math inline">\(S&lt;\frac{K}{1.05}\)</span>,深度虚值状态
+<span class="math display">\[M_0=(0.07+\delta_0)S\]</span>
+<span class="math display">\[\Delta k=\frac{(0.07+\delta)(1+r)S - (0.07+\delta_0)S}{M_0/k_0}\]</span>
+<span class="math display">\[=k_0\frac{0.07*r+(1+r)\delta-\delta_0}{0.07+\delta_0}\]</span></p></li>
+<li><p><span class="math inline">\(\frac{K}{1.05}&lt;S&lt;K\)</span>,浅度虚值状态
+<span class="math display">\[M_0=(1.12+\delta)S-K\]</span>
+<span class="math display">\[\Delta k=k_0\frac{[1.12*r+(1+r)\delta-\delta_0]S}{(1.12+\delta_0)S-K}\]</span>
+此阶段<span class="math inline">\(\Delta k\)</span>公式是直接跟S和K相关的，但是关系大吗？应该还好，S和K偏离不超过5%，<span class="math inline">\(\Delta k\)</span>取倒数可以观察出来。</p></li>
+<li><p><span class="math inline">\(S&gt;K\)</span>,实值状态：</p></li>
+</ul>
+<p><span class="math display">\[M_0=(0.12+\delta_0)S\]</span></p>
+<p><span class="math display">\[\Delta k=k_0\frac{0.12*r+(1+r)\delta-\delta_0}{0.12+\delta_0}\]</span></p>
+<p>结合图来看一下，涉图期权参数为：<span class="math inline">\(call: \quad \sigma=17.6\%,t=1/12,r=3\%,K=3.6\)</span></p>
+<p><img src="/Derivatives/Option Margin Analysis/Option%20Margin%20Analysis_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>上图给出了当S波动0.1%时，在不同阶段保证金的变化幅度。很有意思的是，抛开接近实值凸起阶段，上面那么复杂公式给出的曲线竟然很像正态分布，期权真的很神奇。</p>
+<p>从模拟情况来看，如果前一天收盘保证金比率为50%，S波动0.1%：</p>
+<ul>
+<li>第二天在深度虚值和实值阶段，保证金风险度增加不超过0.65%；</li>
+<li>但如果第二天处在虚值（距离执行价10%）向实值转变阶段，保证金风险度变动幅度从0.65%快速增加，在（距离执行价5%）阶段达到峰值，0.1%S变动，会导致1.16%保证金比例变动，这个速度是相对快了。如果初始保证金大于50%，那速度就更快了。</li>
+<li>在S偏离（小于）执行价3%-8%，保证金比率10倍于现货波动很容易发生。</li>
+</ul>
+<p>上文给出的峰值1.16%，是依赖于产品波动率(<span class="math inline">\(\sigma=20\%\)</span>)和到期时间(<span class="math inline">\(t=1/12\)</span>)的。</p>
+</div>
+<div id="波动率与到期时间的影响" class="section level3">
+<h3>3. 波动率与到期时间的影响</h3>
+<p>我们定义在初始保证金比率为50%时，S波动0.1%时，保证金比率波动最大值(Maximum Margin Ratio Change, MMRC).</p>
+<p><span class="math display">\[MMRC(\sigma,t)\quad and \quad MMRC(20\%,1/12)=1.16\%\]</span>
+看看两者影响程度如何？</p>
+<div id="波动率的影响" class="section level4">
+<h4>3.1 波动率的影响</h4>
+<p><img src="/Derivatives/Option Margin Analysis/Option%20Margin%20Analysis_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>波动率越小的市场环境，保证金占用变少，<span class="math inline">\(\delta\)</span>变陡了，<span class="math inline">\(\delta\)</span>变化值变大了，所以MMRC也变大了。波动率15%时，MMRC是20%时的一倍左右。</p>
+<p>这是一个需要关注的点，波动率越小，小幅震荡，无聊行情时，越容易松懈和想当然。但此时保证金风险度变化
+非常敏感，在S偏离（小于）执行价3%-8%这段范围内，波动率在15%（这个波动率水平不稀奇），1%的现货波动会引起15%左右的保证金比率变化。</p>
+<p>回过头来，保证金在小幅震荡的环境下少收点，但是比率变化更敏感，这样设计是科学的，这是个很好的风控指标设计理念。</p>
+</div>
+<div id="到期时间的影响" class="section level4">
+<h4>3.2 到期时间的影响</h4>
+<p><img src="/Derivatives/Option Margin Analysis/Option%20Margin%20Analysis_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>到期时间跟波动率对MMRC的影响方式一样，只是后者更敏感。</p>
+<p>三维图没啥特殊凸起区域，可不予关注。</p>
+<p><img src="/Derivatives/Option Margin Analysis/Option%20Margin%20Analysis_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>以上结论，应该是具有普适性，供参考。</p>
+</div>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/Derivatives/%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%9F%E6%9D%83%E5%AF%B9%E5%86%B2%E7%8E%B0%E8%B4%A7/hedge-portfolio-using-option/">如何用Option对冲现货</a></span>
+  <span class="nav-next"><a href="/Derivatives/Dividend-and-Derivatives/dividend-and-derivatives/">分红与衍生品</a> &rarr;</span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+

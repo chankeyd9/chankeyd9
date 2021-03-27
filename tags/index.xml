@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on cq</title>
+    <link>https://chenqian.ink/tags/</link>
+    <description>Recent content in Tags on cq</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenqian.ink/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GMA</title>
+      <link>https://chenqian.ink/tags/GMA/</link>
+      <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/tags/GMA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fof</title>
+      <link>https://chenqian.ink/tags/fof/</link>
+      <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/tags/fof/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tech-notes</title>
+      <link>https://chenqian.ink/tags/Tech-notes/</link>
+      <pubDate>Thu, 11 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/tags/Tech-notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FICC</title>
+      <link>https://chenqian.ink/tags/FICC/</link>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/tags/FICC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>derivatives</title>
+      <link>https://chenqian.ink/tags/derivatives/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/tags/derivatives/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
