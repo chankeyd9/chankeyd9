@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>投资绩效分析系列3：绩效归因-基本框架及股票 - cq</title>
+    <meta property="og:title" content="投资绩效分析系列3：绩效归因-基本框架及股票 - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="算好收益率、选择完比较基准之后，就需要对超额收益进行归因了。超额收益或者亏损，如何理解？从何而来？
+从投资经理而言，超额收益可以来自于择时收益、对当年暴涨的行业的超额配置、对年度明星票的配置；
+从部门而言，超额收益可以来自于对明星经理的超额授权；
+从公司而言，超额收益来自于对不同大类资产（部门）的超额配置（资本分配），比如今年的大宗。
+[&amp;hellip;] 怎么归因，取决于我们能拿到什么？如果是内 &amp;hellip;">
+      <meta property="og:description" content="算好收益率、选择完比较基准之后，就需要对超额收益进行归因了。超额收益或者亏损，如何理解？从何而来？
+从投资经理而言，超额收益可以来自于择时收益、对当年暴涨的行业的超额配置、对年度明星票的配置；
+从部门而言，超额收益可以来自于对明星经理的超额授权；
+从公司而言，超额收益来自于对不同大类资产（部门）的超额配置（资本分配），比如今年的大宗。
+[&amp;hellip;] 怎么归因，取决于我们能拿到什么？如果是内 &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="FOF">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>投资绩效分析系列3：绩效归因-基本框架及股票</h1>
+
+<h3>cq
+  /  2021-05-01</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="归的是什么因" class="section level3">
+<h3>1. 归的是什么因</h3>
+<p>算好收益率、选择完比较基准之后，就需要对超额收益进行归因了。超额收益或者亏损，如何理解？从何而来？</p>
+<p>从投资经理而言，超额收益可以来自于择时收益、对当年暴涨的行业的超额配置、对年度明星票的配置；</p>
+<p>从部门而言，超额收益可以来自于对明星经理的超额授权；</p>
+<p>从公司而言，超额收益来自于对不同大类资产（部门）的超额配置（资本分配），比如今年的大宗。</p>
+</div>
+<div id="用什么思路归因" class="section level3">
+<h3>2. 用什么思路归因</h3>
+<p>怎么归因，取决于我们能拿到什么？如果是内部评估，那你可以拿到每天的持仓和cash flow；如果是第三方评估，那你只能看到基金每天的单位净值了。在上面两种基础上，需要归因到配置和个股选择能力上，衍生了不同思路。</p>
+<div id="单位净值归因" class="section level4">
+<h4>2.1 单位净值归因</h4>
+<p>因为只掌握了单位净值，能做的只能看单位净值表现出来的结果跟需要归的因有无相关关系。最适合的方式就是回归。</p>
+<p>比如你想归因到行业配置或者因子配置，就将因子或者行业超额收益作为因。比如按Fama框架，也可以细化几个因子，比如风格、行业等。这里行业可以是大类行业，比如TMT，非银等这种大类别。</p>
+<p><span class="math display">\[
+r_P-r_f=\alpha+\beta_1*max(r_{TMT}-r_f, 0)+\beta_2*min(r_{非银}-r_f, 0)+\dots + \lambda D(r_m-r_f)^2+\xi
+\]</span>
+其中，D是虚拟变量，当<span class="math inline">\(rm&gt;r_f\)</span>，<span class="math inline">\(D=1\)</span>，否则<span class="math inline">\(D=0\)</span>。<span class="math inline">\(\lambda\)</span>刻画择时能力，<span class="math inline">\(\beta\)</span>刻画配置能力，<span class="math inline">\(\alpha\)</span>刻画择股能力。</p>
+<p>这类采用单位净值归因，用回归方法，很容易不显著，然后得出的结论索然无味。而且如上个系列讲到的，净值数据一定程度也不是公允的，受到大额申赎的影响。但是如果基金没有披露详细持仓，那也没有其他办法。这类归因不是首选。</p>
+</div>
+<div id="持仓数据归因" class="section level4">
+<h4>2.2 持仓数据归因</h4>
+<p>自营或者基金内部评估，就可以采用持仓数据归因。而且还可以考虑现金流对收益率的影响。这一类大多采用Brinson以及后来者在基础上更新的方法。</p>
+<div id="单期归因思路与模型" class="section level5">
+<h5>2.2.1 单期归因：思路与模型</h5>
+<p>Brinson借助的思路，很像生物里面的对照实验的思想。</p>
+<p><span class="math inline">\(P\)</span>表示组合，<span class="math inline">\(B\)</span>表示基准，<span class="math inline">\(\omega\)</span>表示权重，<span class="math inline">\(r\)</span>代表收益率。现在需要归因
+<span class="math display">\[
+r_P-r_B=\sum_{i=1}^n\omega_i^Pr_i^P-\sum_{i=1}^n\omega_i^Br_i^B
+\]</span>
+按对照实验组思路，配置带来的超额收益。</p>
+<p><strong>配置收益</strong>
+<span class="math display">\[
+AR=\sum_{i=1}^n(\omega_i^P-\omega_i^B)(r_i^B-r_B)
+\]</span>
+<span class="math inline">\(\omega_i^P-\omega_i^B\)</span>表示主动权重。对有超额收益率的资产，进行主动权重配置，加总就是配置收益。</p>
+<p><strong>选择收益</strong>
+<span class="math display">\[
+SR=\sum_{i=1}^{n}\omega_i^P (r_i^P-r_i^B)
+\]</span>
+若同类型的资产<span class="math inline">\(i\)</span>中，选择的个体就是比同类型基准有超额收益，那说明选择能力优秀，加总形成选择收益。</p>
+<p>而且有：
+<span class="math display">\[
+r_P-r_B=AR+SR
+\]</span>
+最后，说明一下这里的<span class="math inline">\(i\)</span>，外延就拓展开来了。</p>
+<ul>
+<li>代表行业，一般选申万一级，对单个投资组合而言，则分解出来的就是行业的配置收益和个股的选择收益。</li>
+<li>代表同资产部门不同投资经理，权重就是部门内部的资金分配，基准权重就是等权重（或按Senor，junior等分组划权重），基准收益可以就是该资产的指数收益，各投资经理都一样的基准。分解出来的就是部门老总对投资经理的配置收益和投资经理自己的业绩收益。</li>
+<li>代表不同的大类资产，比如FICC，股票，衍生品投资等不同部门。权重就是资本分配，基准可以用均等分配，基准收益可以用各大类资产的指数收益（参考同系列《基准选择》一文，尤其注意投委会对各投资部门的限制，比如衍生品部门的投机仓位限制）。最后分解出来的就是公司大类资产配置收益和各部门的选择（业绩）收益。</li>
+</ul>
+</div>
+<div id="单期归因实践" class="section level5">
+<h5>2.2.1 单期归因：实践</h5>
+<p>时间：2020年4月1日-2020年9月30日；
+基金：540006.OF
+持仓：按2020年6月30日，年报披露假设不变；
+基准：沪深300指数*90%+同业存款利率*10%;
+基准持仓：按2020年6月30日维持不变；
+现金：作为一类资产，纳入分析；
+行业：申万一级。</p>
+<p><img src="/FOF/2021-05-01-投资绩效分析系列3：绩效归因part1_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="/FOF/2021-05-01-投资绩效分析系列3：绩效归因part1_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p>计算本期超额收益分解</p>
+<pre><code>##      AR      SR      ER 
+## 0.01059 0.07667 0.08727</code></pre>
+<p>把超额收益分解到各行业资产中，主动权重以及基准单资产超额收益见理论部分的定义。
+<img src="/FOF/2021-05-01-投资绩效分析系列3：绩效归因part1_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="/FOF/2021-05-01-投资绩效分析系列3：绩效归因part1_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p>通过上述两张图，可以得出下属归因结论：<br />
+- 电气设备主动权重和基准收益都不错。所以配置收益和选股收益都不错；<br />
+- 超配非银金融，虽然行业收益不行导致配置收益不行，但是选股收益还不错；<br />
+- 从商业贸易中，能挖到好的标的。同非银，配置收益不行，但是选股收益不错，这种很体现水平；<br />
+- 严重低配休闲服务（其实就是中国中免）；<br />
+- 食品饮料少配了，而且选的股也不咋行；<br />
+- 医药生物行业，同非银和商业贸易，通过选股拿到了不错的超额收益。</p>
+</div>
+<div id="多期归因思路与模型" class="section level5">
+<h5>2.2.2 多期归因：思路与模型</h5>
+<p>上面论及的单期模型，仔细推论下。需要在单期内，假设没有新增投入和投出，假设组合不调仓，基准也不调仓。这不实际。
+<span class="math display">\[
+r_{i,t}=\frac{M_{i,t}}{M_{i-1,t}+C_{i,t}}-1
+\]</span>
+M代表市值，C代表净买入为正，净卖出为负。<span class="math inline">\(i\)</span>也可以是现金，那C就是净申购。
+<span class="math display">\[
+\omega_{i,t}=\frac{M_{i,t-1}+C_{i,t}}{M_{P,t-1}+C_{P,t}}
+\]</span>
+如果将商业指数作为基准，那会公布每天的权重，成分调整也有记录，Wind直接可以取到。</p>
+<p>多期收益麻烦的地方在于，不能单纯按单期的框架分解，然后进行多期加总。因为存在单期的超额收益可以在后期产生再投资收益。有不同的将再投资收益分解到每个单期上的算法。下面介绍可以用起来的两种:</p>
+<p><strong>Frongello算法</strong></p>
+<p>核心思想就是一句话：将再投资收益归属到其实际发生阶段。<span class="math inline">\(ER_t\)</span>表示第<span class="math inline">\(t\)</span>期超额收益，<span class="math inline">\(ER{(n)}\)</span>表示前n期超额收益。
+<span class="math display">\[
+ER_{T}^{&#39;}=ER_T·\prod_{t=1}^{T-1}(1+r_t^P)+r_T^B·\sum_{t=1}^{T-1}ER_t^{&#39;}
+\]</span></p>
+<p>理解下来，当期经再投资调整的超额收益等于两部分之和：(1)投资组合前期累计复合收益在当期的超额收益；（2）前期所有超额收益投资于基准组合所产生的再投资收益。</p>
+<p><strong>GRAP算法</strong></p>
+<p>核心思想：将再投资收益归属到超额收益的产生阶段。
+<span class="math display">\[
+ER_T^{&#39;}=ER_T·\prod_{t=1}^{T-1}(1+r_t^P)·\prod_{l=T+1}^{n}(1+R_l^B)
+\]</span>
+再投资收益归因到超额收益产生阶段而非发生阶段，我理解此类归因更合理。</p>
+<p>可以证明的是前n期超额收益，等于经调整的各单期超额收益之和。 上面两个算法都成立，<span class="math inline">\(ER(n)\)</span>代表前n期超额收益：
+<span class="math display">\[
+ER(n)=r^P(n)-r^B(n)=\sum^{n}_{T=1}ER_T^{&#39;}
+\]</span>
+这就自洽完整了。<span class="math inline">\(ER_T\)</span>可以按上述单期介绍的算法分解为<span class="math inline">\(AR_T\)</span>和<span class="math inline">\(SR_T\)</span>。针对GRAP算法，可以分解到各单期单资产层面上。
+<span class="math display">\[
+ER(n)=\sum^{n}_{T=1}[(AR_T+SR_T)·\prod_{t=1}^{T-1}(1+r_t^P)·\prod_{l=T+1}^{n}(1+R_l^B)] \\
+AR(n)=\sum^{n}_{T=1}[AR_T·\prod_{t=1}^{T-1}(1+r_t^P)·\prod_{l=T+1}^{n}(1+R_l^B)]\\
+SR(n)=\sum^{n}_{T=1}[SR_T·\prod_{t=1}^{T-1}(1+r_t^P)·\prod_{l=T+1}^{n}(1+R_l^B)]
+\]</span></p>
+<p>Frongello算法同样可以分解到各单期单资产中，但是需要递推。</p>
+</div>
+<div id="多期归因实践" class="section level5">
+<h5>2.2.2 多期归因：实践</h5>
+<p>还是原来的基金，将2019年6月到9月作为第一期，2019年10月到3月作为第二期，2020年3月到9月作为第三期，实践多期归因的结果。</p>
+<p><img src="/FOF/2021-05-01-投资绩效分析系列3：绩效归因part1_files/figure-html/unnamed-chunk-7-1.png" width="672" /><img src="/FOF/2021-05-01-投资绩效分析系列3：绩效归因part1_files/figure-html/unnamed-chunk-7-2.png" width="672" /><img src="/FOF/2021-05-01-投资绩效分析系列3：绩效归因part1_files/figure-html/unnamed-chunk-7-3.png" width="672" /><img src="/FOF/2021-05-01-投资绩效分析系列3：绩效归因part1_files/figure-html/unnamed-chunk-7-4.png" width="672" /></p>
+<p>多期分析的维度同单期的维度，只是多期是数据量更充足，更均衡地反映投资经理的投资表现和业绩来源。</p>
+<p>至此，文中理论部分是我梳理之后再列的简要，案例也都是本人自己写代码实践的（已框架化）。大家如果有什么需要沟通的，可随时与我联系。</p>
+</div>
+</div>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/FOF/how-to-choose-benchmark/">投资绩效分析系列2：如何选择组合比较基准</a></span>
+  <span class="nav-next"><a href="/FOF/performance-attribution-bonds-derivatives-derivatives-derivatives-derivatives/">投资绩效分析系列4：绩效归因-债券、衍生品及其他</a> &rarr;</span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+

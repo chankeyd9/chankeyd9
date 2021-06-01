@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>投资绩效分析系列4：绩效归因-债券、衍生品及其他 - cq</title>
+    <meta property="og:title" content="投资绩效分析系列4：绩效归因-债券、衍生品及其他 - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="按系列3的基准框架，可以覆盖基本所有品种的绩效分析，因为只区分配置效应和选择效应，所以绩效分析只到资产本身层面。但是不同资产类别的风险因子不同，如果只归结到资产层面，可能会带来一些模糊的结论。比如收益率下行，按基准框架得出的是选择效应导致的负超额收益。但是你无法清楚知道是选择的券种本身信用资质问题（利差的问题）还是恰好是组合的久期比基准的短的问题。这需要进一步分解。
+[&amp;hellip;] 正常自营 &amp;hellip;">
+      <meta property="og:description" content="按系列3的基准框架，可以覆盖基本所有品种的绩效分析，因为只区分配置效应和选择效应，所以绩效分析只到资产本身层面。但是不同资产类别的风险因子不同，如果只归结到资产层面，可能会带来一些模糊的结论。比如收益率下行，按基准框架得出的是选择效应导致的负超额收益。但是你无法清楚知道是选择的券种本身信用资质问题（利差的问题）还是恰好是组合的久期比基准的短的问题。这需要进一步分解。
+[&amp;hellip;] 正常自营 &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="FOF">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>投资绩效分析系列4：绩效归因-债券、衍生品及其他</h1>
+
+<h3>cq
+  /  2021-05-16</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>按系列3的基准框架，可以覆盖基本所有品种的绩效分析，因为只区分配置效应和选择效应，所以绩效分析只到资产本身层面。但是不同资产类别的风险因子不同，如果只归结到资产层面，可能会带来一些模糊的结论。比如收益率下行，按基准框架得出的是选择效应导致的负超额收益。但是你无法清楚知道是选择的券种本身信用资质问题（利差的问题）还是恰好是组合的久期比基准的短的问题。这需要进一步分解。</p>
+<div id="债券绩效归因" class="section level3">
+<h3>1. 债券绩效归因</h3>
+<div id="归因思路" class="section level4">
+<h4>1.1 归因思路</h4>
+<p>正常自营或者基金中，债券配置包含利率债和信用债（可转债可按系列3基准框架归因），风险因子主要在利率和利差上。按Campisi框架，债券投资收益，可以归结为：
+<span class="math display">\[
+r=I + D*(-\Delta y)+D*(-\Delta y^s)+\xi
+\]</span>
+Income return就是利息收入部分，计算公式为收到的利息/期初买入价。D是修正久期，<span class="math inline">\(y\)</span>是国债收益率，<span class="math inline">\(y_s\)</span>是利差。</p>
+<p>同样，基准的收益也可以分解如下
+<span class="math display">\[
+r_B=I_B+D_B*(-\Delta y)+D_B*(-\Delta y^s)
+\]</span>
+基准收益是没有选择效应的，所以通过（2）式求出<span class="math inline">\(\Delta y_s\)</span>，并且作为投资组合的利差变化，从而将多余的超额收益归结为选择效应。是可以理解这一点的，因为对信用债投资，重点在信用资质的评估，这是投资经理的<span class="math inline">\(\alpha\)</span>所在。</p>
+<p>上述还只是将投资组合和基准组合收益分解了。那如何将超额收益<span class="math inline">\(r-r_B\)</span>分解呢？</p>
+<ul>
+<li><p>针对利息收益部分，可以按基准框架，分解为配置收益和选择收益。</p></li>
+<li><p>针对国债效应部分，可以分解为曲线平移效应，和非平移效应。</p></li>
+<li><p>针对利差效应部分，可以分解为基准利差效应，和利差选择效应。</p></li>
+</ul>
+</div>
+<div id="归因案例" class="section level4">
+<h4>1.2 归因案例</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Portfolio</th>
+<th align="center">Weight</th>
+<th align="center">Duration*</th>
+<th align="center">Return</th>
+<th align="center">Income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Treasuries</td>
+<td align="center">20%</td>
+<td align="center">4.75</td>
+<td align="center">6%</td>
+<td align="center">0.30%</td>
+</tr>
+<tr class="even">
+<td align="center">Corportates</td>
+<td align="center">65%</td>
+<td align="center">3.6</td>
+<td align="center">4.40%</td>
+<td align="center">0.52%</td>
+</tr>
+<tr class="odd">
+<td align="center">High-Yields</td>
+<td align="center">15%</td>
+<td align="center">4.3</td>
+<td align="center">5.60%</td>
+<td align="center">0.82%</td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center">100%</td>
+<td align="center">3.94</td>
+<td align="center">4.90%</td>
+<td align="center">0.52%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Benchmark</th>
+<th align="center">Weight</th>
+<th align="center">Duration*</th>
+<th align="center">Return</th>
+<th align="center">Income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Treasuries</td>
+<td align="center">50%</td>
+<td align="center">4.75</td>
+<td align="center">6%</td>
+<td align="center">0.30%</td>
+</tr>
+<tr class="even">
+<td align="center">Corportates</td>
+<td align="center">40%</td>
+<td align="center">5.25</td>
+<td align="center">8.00%</td>
+<td align="center">0.57%</td>
+</tr>
+<tr class="odd">
+<td align="center">High-Yields</td>
+<td align="center">10%</td>
+<td align="center">4.0</td>
+<td align="center">5.00%</td>
+<td align="center">0.71%</td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center">100%</td>
+<td align="center">4.875</td>
+<td align="center">6.70%</td>
+<td align="center">0.45%</td>
+</tr>
+</tbody>
+</table>
+<p>按国债收益率期限结构，插值到对应的修正久期上</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Maturity</th>
+<th align="center"><span class="math inline">\(\Delta y\)</span></th>
+<th align="center">price effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">3.6</td>
+<td align="center">-1.00%</td>
+<td align="center">3.60%</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">-1.05%</td>
+<td align="center">4.20%</td>
+</tr>
+<tr class="odd">
+<td align="center">4.3</td>
+<td align="center">-1.10%</td>
+<td align="center">4.73%</td>
+</tr>
+<tr class="even">
+<td align="center">4.75</td>
+<td align="center">-1.20%</td>
+<td align="center">5.70%</td>
+</tr>
+<tr class="odd">
+<td align="center">5.25</td>
+<td align="center">-1.35%</td>
+<td align="center">7.09%</td>
+</tr>
+<tr class="even">
+<td align="center">3.94</td>
+<td align="center">-1.0647%</td>
+<td align="center">4.19%</td>
+</tr>
+<tr class="odd">
+<td align="center">4.875</td>
+<td align="center">-1.252%</td>
+<td align="center">6.11%</td>
+</tr>
+</tbody>
+</table>
+<p>按公式（1）和（2）将收益分解，特别注意利差的处理。</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Portfolio</th>
+<th align="center">Treasury effect</th>
+<th align="center">Income effect</th>
+<th align="center">Spread effect</th>
+<th align="center">Choose effect</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Treasuries</td>
+<td align="center">5.70%</td>
+<td align="center">0.30%</td>
+<td align="center">0.00%</td>
+<td align="center">0.00%</td>
+<td align="center">6.00%</td>
+</tr>
+<tr class="even">
+<td align="center">Corportates</td>
+<td align="center">3.60%</td>
+<td align="center">0.52%</td>
+<td align="center">0.23%</td>
+<td align="center">0.05%</td>
+<td align="center">4.40%</td>
+</tr>
+<tr class="odd">
+<td align="center">High-Yields</td>
+<td align="center">4.73%</td>
+<td align="center">0.82%</td>
+<td align="center">0.10%</td>
+<td align="center">-0.05%</td>
+<td align="center">5.60%</td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center">4.19%</td>
+<td align="center">0.521%</td>
+<td align="center">0.167%</td>
+<td align="center">0.022%</td>
+<td align="center">4.90%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Benchmark</th>
+<th align="center">Treasury effect</th>
+<th align="center">Income effect</th>
+<th align="center">Spread effect</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Treasuries</td>
+<td align="center">5.70%</td>
+<td align="center">0.30%</td>
+<td align="center">0.00%</td>
+<td align="center">6.00%</td>
+</tr>
+<tr class="even">
+<td align="center">Corportates</td>
+<td align="center">7.09%</td>
+<td align="center">0.57%</td>
+<td align="center">0.34%</td>
+<td align="center">8.00%</td>
+</tr>
+<tr class="odd">
+<td align="center">High-Yields</td>
+<td align="center">4.20%</td>
+<td align="center">0.71%</td>
+<td align="center">0.09%</td>
+<td align="center">5.00%</td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center">6.11%</td>
+<td align="center">0.449%</td>
+<td align="center">0.15%</td>
+<td align="center">6.700%</td>
+</tr>
+</tbody>
+</table>
+<p>针对各项需要将<span class="math inline">\(4.9\%-6.7\%=-1.8\%\)</span>的超额收益进行分解。</p>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="14%" />
+<col width="13%" />
+<col width="7%" />
+<col width="9%" />
+<col width="12%" />
+<col width="14%" />
+<col width="11%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Access Return</th>
+<th align="center">Income Allocation</th>
+<th align="center">Income Selection</th>
+<th align="center">Duration*</th>
+<th align="center">Curve Effect</th>
+<th align="center">Spread Duration*</th>
+<th align="center">Spread Allocation</th>
+<th align="center">Issue Selection</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Treasuries</td>
+<td align="center">0.045%</td>
+<td align="center">0.000%</td>
+<td align="center">NA</td>
+<td align="center">-0.050%</td>
+<td align="center">NA</td>
+<td align="center">0.043%</td>
+<td align="center">0.000%</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Corportates</td>
+<td align="center">0.030%</td>
+<td align="center">-0.033%</td>
+<td align="center">NA</td>
+<td align="center">-0.590%</td>
+<td align="center">NA</td>
+<td align="center">0.008%</td>
+<td align="center">0.029%</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">High-Yields</td>
+<td align="center">0.013%</td>
+<td align="center">0.017%</td>
+<td align="center">NA</td>
+<td align="center">-0.098%</td>
+<td align="center">NA</td>
+<td align="center">-0.002%</td>
+<td align="center">-0.007%</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center">0.088%</td>
+<td align="center">-0.016%</td>
+<td align="center">-1.177%</td>
+<td align="center">-0.738%</td>
+<td align="center">-0.028%</td>
+<td align="center">0.049%</td>
+<td align="center">0.022%</td>
+<td align="center">-1.800%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>利息收入部分</strong></p>
+<ul>
+<li><p>Income Allocation: <span class="math inline">\((w_{i,P}-w_{i,B})*(r_{i,B}-r_B)\)</span></p>
+<p>比如Treasury部分<span class="math inline">\((0.2-0.5)*(0.3\%-0.449\%)=0.045\%\)</span>，代表低息国债的低配收益。</p></li>
+<li><p>Income Selection: <span class="math inline">\(w_{i,P}*(r_{i,P}-r_{i,B})\)</span></p>
+<p>比如Corporate部分<span class="math inline">\(0.65*(0.52\%-0.57\%)=-0.033\%\)</span>，代表选择的信用债票息没有基准高，损失的选择收益。</p></li>
+</ul>
+<div id="国债效应部分" class="section level5">
+<h5>国债效应部分</h5>
+<ul>
+<li><p>曲线平移（Duration)效应：</p>
+<p><span class="math inline">\(-(D_{P}^*-D_B^*)\times \Delta y_{D_B}=(3.94-4.88)*-1.252\%=-1.177\%\)</span>，代表按基准期限的曲线平移带来的超额收益；</p></li>
+<li><p>曲线非平移效应：<span class="math inline">\(w_{i,P}*(-D^*_{i,P})*(\Delta y_{D_{i,P}}-\Delta y_{D_B})\)</span></p>
+<p>比如Corporate部分<span class="math inline">\(0.65*-3.6*(-1\%-(-1.252\%))=-0.590\%\)</span>，代表信用债修正久期的期限点非平移部分带来的超额收益。</p></li>
+</ul>
+</div>
+<div id="利差效应部分" class="section level5">
+<h5>利差效应部分</h5>
+<ul>
+<li><p>基准利差效应：</p>
+<p><span class="math inline">\((-D^*_P-(-D^*_B))*\Delta y^s=(0.15\%/(-4.875))*(-3.94+4.88)=-0.028\%\)</span>，代表按基准利差平行变动带来的超额收益，同国债效应部分。</p></li>
+<li><p>利差配置：</p>
+<p><span class="math inline">\([w_{i,P}*(-D^*_{i,P})-w_{i,B}*(-D^*_{i,B})]*(\Delta y^s_i-\Delta y^s)\)</span>，比如corporate部分</p>
+<p><span class="math inline">\([0.65*(-3.6)-0.4*(-5.25)]*(0.34\%/(-5.25)-0.15\%/(-4.875))=0.008%\)</span>，代表利差的配置收益。</p></li>
+</ul>
+</div>
+<div id="投资经理alpha部分" class="section level5">
+<h5>投资经理<span class="math inline">\(\alpha\)</span>部分</h5>
+<ul>
+<li>基准组合不存在alpha，所以直接将投资组合的选择效应乘以贡献的权重，得到Issue selection部分。</li>
+</ul>
+<p>以上，各个层面都可以进行汇总，比如利息收入部分的<span class="math inline">\(0.088\%-0.016\%=0.072\%\)</span>，恰好等于<span class="math inline">\(0.521\%-0.449\%\)</span>，其它几个部分也一样。现在可以很清晰分析超额收益为负的直接原因就是久期配短了，没抓住行情。</p>
+</div>
+</div>
+<div id="债券投资组合基准" class="section level4">
+<h4>1.3 债券投资组合基准</h4>
+<p>以上仍遗留了一个问题，债券投资组合的基准哪里来的？按业绩基准系列说过的，多数基准还是商业指数。股票的商业指数，我们相当熟悉，债券就有点难了。中债提供近3000多条债券指数，可供作为基准选择。还不包括中证提供的，太过庞杂，我们整理一下。在近2300多只中长期纯债公募基金中，选择的业绩基准指数主要以下几类：</p>
+<ul>
+<li><p>定期存款（25%）：选择这类基准，意思是跑赢银行就行了。这种可以将cash作为资产类别之一纳入到绩效分析框架之中，但是结果并不会很有启发。</p></li>
+<li><p>中债指数（60%），如需细节见<a href="http://yield.chinabond.com.cn/cbweb-mn/indices/single_index_query">中债指数</a>：</p>
+<ul>
+<li>指数包含三类：净价指数、全价指数和财富指数。以下各类指数都包含这三类。
+<ul>
+<li>净价指数类比于债券净价，不包含利息，衡量债券市场的涨跌程度。</li>
+<li>全价指数是在净价基础上加上应收利息，付息后会减去。所以单个全价指数会有段点，不连续，但是全市场的全价指数就会平滑很多。</li>
+<li>财富指数把已发利息、提前偿还本金考虑在内，适合作为绩效比较基准。用其他类型作为业绩比较基准都是耍流氓。但是仍大有人在，比如用中债全价类的指数；以及股票基金用沪深300而不是沪深300全收益指数。</li>
+</ul></li>
+<li>中债债券指数大类如下：
+<ul>
+<li>中债综合指数：作为综合指数，样本最多，包含除ABS和可转债以外所有境内上市债券，涵盖银行间、交易所，类比于上证综合指数。</li>
+<li>中债新综合指数：在中债综合指数基础上，剔除了私募债（含银行间的PPN和交易所的私募债）。还有新综合财富在已收利息和提前偿还本金的再投资处理略有不同，收到的利息及提前偿还的本金收入按日累计作为现金投资于活期存款，月末最后一个工作日将当月累积的现金全部再投资于债券组合中。搞的很复杂，但是没啥实际作用感觉。</li>
+<li>中债总指数：剔除地方政府债的所有利率债。名字好坑爹啊！</li>
+<li>其他：如中债信用债、企业债、金融债等，就按名称分类的债券集合组成的指数。</li>
+</ul></li>
+<li>自己整理刨析1500多只中长期纯债基金，业绩基准选择结构如下：
+<ul>
+<li>74%左右选择中债综合指数，里面一半是中债综合全价指数；</li>
+<li>选择什么样的指数作为纯债组合基准，取决于投资组合的限制、约束等。比如80%投资于信用债，20%投资于国债或现金等；中债同样针对上述所有指数提供不同久期集合的指数，如果投资组合对期限有限制，可以对应选择。</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">指数名称</th>
+<th align="center">数量</th>
+<th align="center">占比</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>中债综合指数</strong></td>
+<td align="center"><strong>1112</strong></td>
+<td align="center"><strong>73.64%</strong></td>
+</tr>
+<tr class="even">
+<td align="center">中债综合指数(全价)</td>
+<td align="center">579</td>
+<td align="center">38.34%</td>
+</tr>
+<tr class="odd">
+<td align="center">中债综合指数(总财富)</td>
+<td align="center">284</td>
+<td align="center">18.81%</td>
+</tr>
+<tr class="even">
+<td align="center">中债综合指数</td>
+<td align="center">249</td>
+<td align="center">16.49%</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>中债总指数</strong></td>
+<td align="center"><strong>205</strong></td>
+<td align="center"><strong>13.58%</strong></td>
+</tr>
+<tr class="even">
+<td align="center">中债总指数</td>
+<td align="center">108</td>
+<td align="center">7.15%</td>
+</tr>
+<tr class="odd">
+<td align="center">中债总指数(全价)</td>
+<td align="center">76</td>
+<td align="center">5.03%</td>
+</tr>
+<tr class="even">
+<td align="center">中债总财富</td>
+<td align="center">21</td>
+<td align="center">1.39%</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>其他</strong></td>
+<td align="center"><strong>145</strong></td>
+<td align="center"><strong>9.60%</strong></td>
+</tr>
+<tr class="even">
+<td align="center">中债信用债</td>
+<td align="center">69</td>
+<td align="center">4.57%</td>
+</tr>
+<tr class="odd">
+<td align="center">中债利率债</td>
+<td align="center">22</td>
+<td align="center">1.46%</td>
+</tr>
+<tr class="even">
+<td align="center">中债高信用</td>
+<td align="center">19</td>
+<td align="center">1.26%</td>
+</tr>
+<tr class="odd">
+<td align="center">中债企业债</td>
+<td align="center">18</td>
+<td align="center">1.19%</td>
+</tr>
+<tr class="even">
+<td align="center">中债金融债</td>
+<td align="center">17</td>
+<td align="center">1.13%</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>中债新综合指数</strong></td>
+<td align="center"><strong>48</strong></td>
+<td align="center"><strong>3.18%</strong></td>
+</tr>
+<tr class="even">
+<td align="center">中债新综合指数(全价)</td>
+<td align="center">30</td>
+<td align="center">1.99%</td>
+</tr>
+<tr class="odd">
+<td align="center">中债新综合（总财富）</td>
+<td align="center">18</td>
+<td align="center">1.19%</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>总计</strong></td>
+<td align="center"><strong>1510</strong></td>
+<td align="center"><strong>100.00%</strong></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>中证指数（15%）：中证指数公司搞的债券类指数，分类类同于中债，也不是主流，就不过多描述了。</p></li>
+</ul>
+<p>以上就是对债券组合绩效分析的全部内容了。像可转债此类标的，利率不是主要风险因子，可以归入系列3的主流归因框架分析。</p>
+</div>
+</div>
+<div id="另类策略的绩效归因" class="section level3">
+<h3>2. 另类策略的绩效归因</h3>
+<p>系列3和上述债券的归因框架，本质是在讲配置的归因，比如大类资产配置，股票行业配置，Campisi框架下的不同信用风险的债券品种配置。谈配置的话，很少说换手率特别高。所以选择的基准也是如此，比如沪深300指数，也是固定周期调仓。</p>
+<p>但是快进快出的策略不在少数。比如期货策略、期权策略。这类本质不是做配置，也很难找到此类策略的比较基准（除非找同类可比基金，但是选择环节很难控制，而且不是第三方生产的）。所以这种往往只能选择货币收益。比如股票多空的另类基金，共39只，业绩基准全部都是1年定期存款利率，超额收益很多时候来自于纯粹择时的东西（或者你可以说均值回归）。此类用传统的Brinson框架归因是失效的。对于那些做题材或者抢板的，本质做短期资金流动和市场微观结构，不在范畴之内，这玩意归不了。</p>
+<p>此类归因应该直奔收益来源本身，就是择时。无论你是衍生品单边，还是期货套利，还是期权策略，本质做的不是配置，而是择时。只是期权策略不仅仅是择标的涨跌的时间区间，多了一个波动率的起伏区间，期货套利策略，是在对基差进行择时。</p>
+<div id="衍生品投机策略归因" class="section level4">
+<h4>2.1 衍生品投机策略归因</h4>
+<p><span class="math display">\[
+\Delta P=\alpha+\beta_1*max(\Delta M, 0)+\beta_2*min(\Delta M, 0)+\xi
+\]</span></p>
+<p><span class="math inline">\(\alpha\)</span>代表一些非结构化收益，比如衍生品的标的资产不单单是m的时候，<span class="math inline">\(\beta_1\)</span>衡量在市场上涨时承担的系统风险，以及<span class="math inline">\(\beta_2\)</span>则相反。若<span class="math inline">\(\beta_1-\beta_2&gt;0\)</span>，衡量择时能力强度。如果<span class="math inline">\(\beta_2\)</span>是负的，而且显著，那说明做空水平不错。</p>
+<p>如果是做方向性的期权价差策略，也适用于此，比如各类熊牛市价差。</p>
+</div>
+<div id="期货套利策略归因" class="section level4">
+<h4>2.2 期货套利策略归因</h4>
+<p>如果是期现或者跨期套利，可以用抛出了红利因素的基差作为自变量。
+<span class="math display">\[
+\Delta P=\alpha+\beta_1*max(\Delta b_t, 0)+\beta_2*min(\Delta b_t, 0)+\xi
+\]</span>
+这个是我自己参考（1）式设计的，没有（1）式那么有理论基础。</p>
+<p><strong>如果想进一步看看，做多或者做空各自擅长程度（多空择时的优秀程度）。可以对<span class="math inline">\(\Delta P\)</span>也划分为<span class="math inline">\(\Delta P^+\)</span>和<span class="math inline">\(\Delta P^-\)</span>，然后再回归得到4个参数，再用离差平方和占比的形式看各自能解释的百分比。可以很清晰看出来是什么头寸方向再赚钱和亏钱。也容易看出来投资经理的擅长领域和边界在那里。</strong></p>
+<p>上述两个模型，用某几个组合几个月数据跑了下结果。投机策略上空头赚钱显著，空头亏钱也显著，说明投资经理持续在赌空头，择时效果不佳，跨品种套利策略也类似。涉及隐私，这里就不贴了。</p>
+</div>
+<div id="期权波动率策略归因" class="section level4">
+<h4>2.3 期权波动率策略归因</h4>
+<p><span class="math display">\[
+\Delta PnL=\delta \Delta S + \frac{1}{2}\Gamma(\Delta S)^2+\theta \Delta t+ \nu\Delta\sigma \\
+= \delta \Delta S + \frac{1}{2}\Gamma S^2[(\frac{\Delta S}{S\sqrt{\Delta t}})^2-\sigma^2]\Delta t + \nu\Delta \sigma  \\
+= \text{非完美对冲损益} + \text{波动率预期差损益} + \text{隐含波动率变动损益}
+\]</span></p>
+<p>可将逐日收益，归因到上述三个方面，看策略的有效性以及具体哪个环节做得不好。这块理论比较充足，而且手边没有实际组合的数据，这块就不实践了。</p>
+</div>
+</div>
+<div id="其他" class="section level3">
+<h3>3. 其他</h3>
+<p>对于像Alpha组合，或者融资融券组合，可以直接将cash的负权重，或者期货负的名义市值带入到基准归因框架里计算，问题不大。</p>
+</div>
+<div id="最后" class="section level3">
+<h3>4. 最后</h3>
+<p>归因这块基本到这儿就结束了，涵盖了股票、债券以及衍生品等大多数品种，大抵是形成了一个框架。涉及多期归因的话，数据清洗整理中，收益率和权重的计算是最麻烦的。系列3来自于Brinson框架以及业界对方法的更新，我选择我个人理解最合适的一类展示出来，还有很多方法和处理，大家可以去扩充了解。系列4中Campisi模型的例子来自于Carl R.Bacon的《Practical Portfolio Performance Measurement and Attribution》(2nd)书中Fixed Income Attribution Part。至于另类策略归因是自己基于C-L模型胡诌的。大家有想法，欢迎随时交流。</p>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/FOF/portfolio-performance-attribution-base/">投资绩效分析系列3：绩效归因-基本框架及股票</a></span>
+  <span class="nav-next"><a href="/FOF/risk-adjusted-returns/">投资绩效分析系列5：风险调整收益</a> &rarr;</span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+

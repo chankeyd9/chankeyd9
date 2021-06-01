@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>投资绩效分析系列1：如何计算投资收益率 - cq</title>
+    <meta property="og:title" content="投资绩效分析系列1：如何计算投资收益率 - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="计算收益率麻烦的地方是在中间有投入或者退出本金。
+[&amp;hellip;] 假设有甲、乙两个投资人，分别投资于两只基金 A 和 B ，这两只基金都投资于中国 A 股股市。为了简单起见，我们假设投资为1年期限。
+甲在上半年投资了 100 万到 A ，然后 A 半年赚了 120%；甲一看赚了钱，马上追加了 200 万，结果 下半年这只基金亏损 50%。显然， &amp;hellip;">
+      <meta property="og:description" content="计算收益率麻烦的地方是在中间有投入或者退出本金。
+[&amp;hellip;] 假设有甲、乙两个投资人，分别投资于两只基金 A 和 B ，这两只基金都投资于中国 A 股股市。为了简单起见，我们假设投资为1年期限。
+甲在上半年投资了 100 万到 A ，然后 A 半年赚了 120%；甲一看赚了钱，马上追加了 200 万，结果 下半年这只基金亏损 50%。显然， &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="FOF">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>投资绩效分析系列1：如何计算投资收益率</h1>
+
+<h3>cq
+  /  2021-04-11</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>计算收益率麻烦的地方是在中间有投入或者退出本金。</p>
+<blockquote>
+<p>假设有甲、乙两个投资人，分别投资于两只基金 A 和 B ，这两只基金都投资于中国 A 股股市。为了简单起见，我们假设投资为1年期限。</p>
+<p>甲在上半年投资了 100 万到 A ，然后 A 半年赚了 120%；甲一看赚了钱，马上追加了 200 万，结果 下半年这只基金亏损 50%。显然，甲损失了 100+200-(220+200)*50%=90 万，平均投入资金为 200 万一年。</p>
+<p>乙同样在上半年投资了 100 万到 B ， B 在半年赚了 100%，但在年中撤回了 50 万的本金。B 在下半年亏损了 60%。那么乙在这一年赚了(50+150*40%)-100=10 万。乙的平均投入成本为 75 万一年。</p>
+</blockquote>
+<p>假设基金都是单一投资人的，这里基金经理A显然在连续优于B，但是投资者而言，则是乙用更少的本金占用获取了正收益。如何具体计算基金经理和投资者两期的投资收益率。</p>
+<div id="金额加权法" class="section level3">
+<h3>1. 金额加权法</h3>
+<p>金钱加权，本质就是我们很早接触过内部收益率法。
+<span class="math display">\[
+\sum^{n}_{i=0}f_{t_i}(1+r)^{-t_i}=0
+\]</span>
+两边乘以<span class="math inline">\((1+r)^{t_n}\)</span>,并有<span class="math inline">\((1+r)^x\sim1+rx\)</span>。上式可以写成
+<span class="math display">\[
+\sum^{n}_{i=0}f_{t_i}(1+r(t_n-t_i))=0
+\]</span>
+求解<span class="math inline">\(r\)</span>
+<span class="math display">\[
+r=\frac{\sum^{n}_{i=0}f_{t_i}}{-\sum_{i=0}^{n}f_{t_i}(t_n-t_i)}=\frac{\sum^{n}_{i=0}f_{t_i}}{-\sum_{i=0}^{n-1}(t_{i+1}-t_i)\sum_{j=0}^{i}f_{t_j}}
+\]</span>
+<span class="math inline">\(\sum^{i}_{j=0}f_{t_j}\)</span>代表在<span class="math inline">\(t_i\)</span>到<span class="math inline">\(t_{i+1}\)</span>时间内的资本占用。累加看着费劲，看前面甲投资者的例子：</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">时期</th>
+<th align="center">现金流</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(t_0=0\)</span></td>
+<td align="center"><span class="math inline">\(-100\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(t_1=\frac{1}{2}\)</span></td>
+<td align="center"><span class="math inline">\(-200\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(t_2=1\)</span></td>
+<td align="center"><span class="math inline">\([100*(1+120\%)+200]*50\%=210\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+r=-\frac{-100+(-200)+210}{-100*1+(-200)*\frac{1}{2}}=\frac{-90}{200}=-45\%
+\]</span>
+金钱加权法本质就是<strong>收益额除以平均资金占用</strong>，作为<span class="math inline">\(t_0\)</span>到<span class="math inline">\(t_2\)</span>期间的收益率。这里并不一定非要是年化收益率，具体看你把什么时间区间单位化。</p>
+</div>
+<div id="时间加权法" class="section level3">
+<h3>2. 时间加权法</h3>
+<p>时间加权常用一些，将投资区间分解为每天，计算每天的期间收益率，最后作汇总。
+<span class="math display">\[
+r_{i}=期间收益率=\frac{期末市值-(期初市值+净流入资金)}{期初市值+净流入资金}
+\]</span>
+时间加权收益率则为：
+<span class="math display">\[
+r=\Pi_{i=1}^{T}(1+r_i)-1
+\]</span>
+逐日计算前提是，每日都有估值，即期末市值项。时间加权法认为所有时间段不论投资额多少都有相同的权重，故称时间加权。</p>
+<p>当然这有可能会带来违反直觉的偏差，比如丙投资者，初始投资100万，亏了10%，然后撤资剩余10万，赚了100%，实际不亏不赚，但是时间加权法算出来可是赚了80%。如果是专户投资者，他可能不相信你任何关于80%的解释。</p>
+</div>
+<div id="如何选择" class="section level3">
+<h3>3. 如何选择</h3>
+<p>本质上，金额加权法考虑资金权重，而时间加权法一视同仁。我们如何选择，取决于我们是否掌握资金的流入和流出。因为如果你掌握了资金，那你就得为你的择时收益或者亏损，接受奖励或者承担代价。</p>
+<p>比如投资者，如同甲和乙，自己掌握资金流入和流出，就需要使用金额加权法。</p>
+<p>而投资经理A和B，申购赎回不掌握在自己手里，就可以相对使用时间加权法（但是仓位决定在你手里呀）。</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">计算方式</th>
+<th align="center">A和甲</th>
+<th align="center">B和乙</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">时间加权</td>
+<td align="center">基金经理A：10%</td>
+<td align="center">基金经理B：-20%</td>
+</tr>
+<tr class="even">
+<td align="center">金额加权</td>
+<td align="center">投资人甲：-45%</td>
+<td align="center">投资人乙：13.34%</td>
+</tr>
+</tbody>
+</table>
+<p>如果涉及私募股权等流动性较差的品种，估值难以获取，一般采用金额加权法。最终的选择，取决于要求的精确度、资产估值可获得性、计算成本和便利因素。如果产品规模稳定性不错，也可以在销售产品或公布业绩时，采用时间加权法，而内部评估采用金额加权法。</p>
+</div>
+<div id="单位净值法" class="section level3">
+<h3>4. 单位净值法</h3>
+<p>现在购买的各类基金或者资管计划，引入的都是单位资产净值。背后本质其实是时间加权法。假设如下产品：</p>
+<table>
+<colgroup>
+<col width="24%" />
+<col width="5%" />
+<col width="28%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">时期</th>
+<th align="center">市值</th>
+<th align="center">份额</th>
+<th align="center">单位净值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(t_0\)</span></td>
+<td align="center"><span class="math inline">\(M_0\)</span></td>
+<td align="center"><span class="math inline">\(M_0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(t_1\)</span></td>
+<td align="center"><span class="math inline">\(M_1\)</span></td>
+<td align="center"><span class="math inline">\(M_0\)</span></td>
+<td align="center"><span class="math inline">\(\frac{M_1}{M_0}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(t_2\)</span> 期间新增申购<span class="math inline">\(C\)</span></td>
+<td align="center"><span class="math inline">\(M_2\)</span></td>
+<td align="center"><span class="math inline">\(M_0+C\div\frac{M_1}{M_0}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{M_2}{M_0+C\div\frac{M_1}{M_0}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(t_0\)</span>到<span class="math inline">\(t_2\)</span>，基金收益率是
+<span class="math display">\[
+\frac{M_2}{M_0+C\div\frac{M_1}{M_0}}-1
+\]</span>
+化简一下
+<span class="math display">\[
+\frac{M_2}{M_1+C}\times\frac{M_1}{M_0}-1
+\]</span>
+就是<span class="math inline">\((6)\)</span>式时间加权收益率的定义了。C小于0，就是净赎回。</p>
+</div>
+<div id="问题" class="section level3">
+<h3>5. 问题</h3>
+<p>净申购或者净赎回会影响基金的单位净值，以及稀释或扩大原投资者的收益率。</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">时期</th>
+<th align="center">市值</th>
+<th align="center">份额</th>
+<th align="center">单位净值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(t_0\)</span></td>
+<td align="center"><span class="math inline">\(M_0\)</span></td>
+<td align="center"><span class="math inline">\(M_0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(t_1\)</span></td>
+<td align="center"><span class="math inline">\(M_1=(1+r_1)M_0\)</span></td>
+<td align="center"><span class="math inline">\(M_0\)</span></td>
+<td align="center"><span class="math inline">\(1+r_1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(t_2\)</span> 期间新增申购<span class="math inline">\(C=kM_1\)</span>,当期未投资</td>
+<td align="center"><span class="math inline">\(M_2=(1+r_2)M_1+C\)</span></td>
+<td align="center"><span class="math inline">\(M_0+kM_0\)</span></td>
+<td align="center"><span class="math inline">\((1+r_1)(1+\frac{r_2}{1+k})\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(t_1\)</span>到<span class="math inline">\(t_2\)</span>时期，对原投资者收益率稀释倍数为<span class="math inline">\(\frac{1}{1+k}\)</span>。如果巨额申购<span class="math inline">\(25\%\)</span>，收益率会稀释掉20%。新增申购部分，虽然当期未投资，其收益率确可以达到<span class="math inline">\(\frac{r_2}{1+k}\)</span>。期间收益分配，原投资者占比<span class="math inline">\(\frac{1}{1+k}\)</span>，新投资者占比<span class="math inline">\(\frac{k}{1+k}\)</span>。</p>
+<p>这会引发两个问题：</p>
+<ul>
+<li><strong>当组合历史存在大额申赎时，使用单位净值得到的收益率数据，会影响绩效分析结果</strong>；</li>
+<li>个人投资者在投资基金时注意，大额申赎会影响你的收益。同样，基金大额申购后，基金会相对便宜一些；大额赎回后，基金相对会贵一些。</li>
+</ul>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/FOF/portfolio-performance-analysis-part-0/">投资绩效分析系列0：前言</a></span>
+  <span class="nav-next"><a href="/FOF/how-to-choose-benchmark/">投资绩效分析系列2：如何选择组合比较基准</a> &rarr;</span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+

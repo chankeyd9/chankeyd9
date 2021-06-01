@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>投资绩效分析系列5：风险调整收益 - cq</title>
+    <meta property="og:title" content="投资绩效分析系列5：风险调整收益 - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="投资是承担风险来获取收益，投资经理是管理风险的主舵手。而风控人员呢，是监测风险，避免承担过大的风险，或者避免让投资经理承担不必要的风险或者干脆就是不确定性，而没有带来相应的收益。但是谁能告诉我们，承担什么样的风险能获得什么样的收益呢？
+我们喜欢用风险偏好这个词来解释，但是需要进一步，量化它。前面几个系列，已经仔细量化过了投资组合的收益是如何，超额收益的来源和结构是咋样的。现在这个part需要度量风 &amp;hellip;">
+      <meta property="og:description" content="投资是承担风险来获取收益，投资经理是管理风险的主舵手。而风控人员呢，是监测风险，避免承担过大的风险，或者避免让投资经理承担不必要的风险或者干脆就是不确定性，而没有带来相应的收益。但是谁能告诉我们，承担什么样的风险能获得什么样的收益呢？
+我们喜欢用风险偏好这个词来解释，但是需要进一步，量化它。前面几个系列，已经仔细量化过了投资组合的收益是如何，超额收益的来源和结构是咋样的。现在这个part需要度量风 &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="FOF">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>投资绩效分析系列5：风险调整收益</h1>
+
+<h3>cq
+  /  2021-05-30</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>投资是承担风险来获取收益，投资经理是管理风险的主舵手。而风控人员呢，是监测风险，避免承担过大的风险，或者避免让投资经理承担不必要的风险或者干脆就是不确定性，而没有带来相应的收益。但是谁能告诉我们，承担什么样的风险能获得什么样的收益呢？</p>
+<p>我们喜欢用风险偏好这个词来解释，但是需要进一步，量化它。前面几个系列，已经仔细量化过了投资组合的收益是如何，超额收益的来源和结构是咋样的。现在这个part需要度量风险。</p>
+<p>由存在产生定义。如果能被度量的（概率分布），我们称之为风险，无法度量的称之为不确定性。</p>
+<p>如果你在度量过程中发生谬误，或者unkown unkown，那你就需要承担这部分不确定性。比如在债券投资环节，通过信评、尽调（信息对称）等更多的工具和方法，将不确定性尽可能转化为风险，但是违约与否不确定性还是很高，因为这事涉及因素太多，投资周期有长，度量谬误和信息不对称时常发生。投资机构能做的就是，降低概率、大数定律、损失减小（专业处置团队）。度量风险本质也就是在度量收益，这是风险管理的价值。</p>
+<div id="绝对风险度量以及收益率调整指标" class="section level3">
+<h3>1. 绝对风险度量以及收益率调整指标</h3>
+<div id="事前与事后风险" class="section level4">
+<h4>1.1 事前与事后风险</h4>
+<p>度量风险有不同角度：事前风险与事后风险。后者是投资组合过去的风险如何，前者是基于现有持仓的证券估计和预测投资组合未来的风险。作为风险管理和风险控制，更需要关心事前风险，事前风险只care当前持仓，比如波动率，是采用当前投资权重，回溯过去100交易日行情算出组合收益率再求标准差。</p>
+<p>而绩效评估更关注事后风险，采用历史持仓计算的指标。现在也有采用事前指标的历史平均值来作绩效评估的，比如夏普比率，以往采用历史每天真实收益率计算，但是可能某段时间（n天）赌对了一个方向，夏普比率作为事后指标非常好看。如何排除这个运气的成分，用每天的真实持仓回溯历史前n天行情，比如第1天的持仓，就是回溯2n到n+1的行情，最后对n天进行平均得到收益率和标准差，求出夏普比率。</p>
+</div>
+<div id="标准差" class="section level4">
+<h4>1.2 标准差</h4>
+<p>我们很熟悉用收益率的变动性度量风险，就是标准差。按<a href="https://www.gipsstandards.org/">GIPS(全球投资业绩展示标准)</a>的标准，建议使用月度数据（避免短期噪音），至少36个月度。这也是为什么现在很多基金评级公司不对3年以下的基金给予评级的原因。</p>
+<ul>
+<li>夏普比率：<span class="math inline">\(SR=\frac{r_p-r_f}{\sigma_P}\)</span>，太熟悉了。一般年化。收益率多承担<span class="math inline">\(1\%\)</span>的波动，就可以多<span class="math inline">\(1\%\times Sharp\)</span>的收益。注意Sharp只是一个比率，可以作排序，但是不是收益率。如果是负的夏普比率，也可以用来排序，因为标准差越小的负夏普组合更吓人。</li>
+<li><span class="math inline">\(M^2:r_P+SR\times (\sigma_M-\sigma_P)=r_f+\frac{\sigma_M}{\sigma_P}(r_P-r_f)\)</span>，M为市场指数组合，该指标是假设组合都只承担市场风险，各自的收益率是多少？也即按市场风险调整后的收益率。</li>
+<li>那如果反过来，假设市场组合承担了投资组合一样的风险，那超额收益率是多少呢？</li>
+</ul>
+<p><span class="math display">\[
+r_P-r_f-\frac{\sigma_P}{\sigma_M}(r_M-r_f)
+\]</span></p>
+<ul>
+<li>投资偏爱向上偏差，避免向下偏差。<span class="math inline">\(\sigma_D=\sqrt{\sum_i^n \frac{min(r_i-r_f, 0)^2}{n}}\)</span></li>
+<li>衍生了Sortino比率：<span class="math inline">\(\frac{r_p-r_f}{\sigma_D}\)</span>，衡量承担下行风险带来收益的能力。同样也可以计算<span class="math inline">\(M^2\)</span>等指标，不作更多拓展。</li>
+<li>适用范围：万金油。</li>
+</ul>
+</div>
+<div id="beta" class="section level4">
+<h4>1.3 Beta</h4>
+<p>标准差将收益率基于自身均值的离散，称作为风险。也可以将组合收益率与市场收益率之间的同步波动性程度，称作为风险。</p>
+<ul>
+<li>那类似于夏普比率，就有了特雷诺比率：<span class="math inline">\(TR=\frac{r_P-r_f}{\beta}\)</span>，但为了跟夏普比率之间可比较，所以搞了修正TR：<span class="math inline">\(\frac{r_P-r_f}{\beta\sigma_M}\)</span></li>
+<li>那超额收益率就是Jasen Alpha：</li>
+</ul>
+<p><span class="math display">\[
+r_P-r_f-\beta(r_M-r_f)
+\]</span></p>
+<p>跟（1）式类同。只是一个将自身变动性当作风险，一个将与市场联合波动性当作风险。</p>
+<ul>
+<li>可以在CAPM基础上拓展到Fama框架下，大体思想没有变化。</li>
+<li>适用范围：讲究配置，相对分散化的组合。</li>
+</ul>
+</div>
+<div id="回撤" class="section level4">
+<h4>1.4 回撤</h4>
+<p>如果说夏普比率是万金油，<span class="math inline">\(\beta\)</span>适合讲究配置，相对分散化的投资组合。那总有一些忽上忽下，风格明显，比如题材，快进快出，单边集中之类的投资组合，收益率分布特征是极其不对称。但是这类无论怎么玩，总是希望避免损失。适用这类产品的风险度量就是回撤。</p>
+<ul>
+<li><p>最大回撤率<span class="math inline">\(D_{max}\)</span>：一段测量区间内（一般3年）最大潜在损失。</p></li>
+<li><p>平均回撤率<span class="math inline">\(\bar{D}\)</span>：3-5个连续大回撤区间的回撤均值。</p></li>
+<li><p>恢复时间：恢复到最大回撤起点的时间。</p></li>
+<li><p>Calmar比率：<span class="math inline">\(\frac{r_P-r_f}{D_{max}}\)</span> 或者Sterling比率：<span class="math inline">\(\frac{r_P-r_f}{\bar{D}}\)</span></p></li>
+<li><p>因为回撤本身的定义，难以计算经回撤调整的收益率。</p></li>
+<li><p>适用范围：可以用杠杆、风格另类的投资组合。</p></li>
+</ul>
+</div>
+<div id="var或es" class="section level4">
+<h4>1.5 VaR或ES</h4>
+<p>这个很熟悉了，典型的事前风险指标。也可以事后，回测VaR的有效性。</p>
+<ul>
+<li>VaR是根据以往行情，未来5%概率可能出现的最差情况。</li>
+<li>ES是5%概率之后，再差能平均差到多少。</li>
+<li>所以同样可以将，VaR或者ES作为分母，计算比率，作排序比较。</li>
+<li>ES或者VaR的拓展性非常强，可以拆解到单个资产或行业本身，用于资产调整。</li>
+<li>VaR作为计算风险值，可以作为限额，予以分配管理。那跟RAROC指标的本质是一样的。</li>
+<li>适用范围：只关注下行的尾部风险，适用性很强，但是需要关注历史鬼魅效应。</li>
+</ul>
+</div>
+</div>
+<div id="相对风险度量以及收益率调整指标" class="section level3">
+<h3>2. 相对风险度量以及收益率调整指标</h3>
+<p>如果投资经理更关注绩效排名，不需要追求绝对收益，那用相对风险刻画更合适。超额收益率的变动性才是风险。</p>
+<ul>
+<li>Track Error: <span class="math inline">\(\sqrt{\frac{\sum_i^n(e_i-\bar{e})^2}{n}},e_i\)</span>为超额收益。</li>
+<li>Informtion Ratio: <span class="math inline">\(\frac{年化超额收益率}{年化跟踪误差}\)</span>，跟Sharp ration非常类似。用收益除以风险，绝对或者相对而已。事后的跟踪误差和事前的跟踪误差差别非常大，注意口径统一。</li>
+<li>0.5是一个好的信息比率，0.75是非常好的，1.0是相当优秀的。负的IR，代表跑输基准，如果TR还低，那相当糟糕。</li>
+<li>跟踪误差可以用来衡量被动指数基金的Track有效性，一般指数基金控制年化跟踪误差在2-4%范围内。</li>
+</ul>
+</div>
+<div id="使用哪个风险调整指标" class="section level3">
+<h3>3. 使用哪个风险调整指标</h3>
+<p>上述那么多风险指标，如何选择，可以遵循如下原则：</p>
+<ul>
+<li>投资目标是绝对还是相对收益；</li>
+<li>投资决策理念是另类还是分散配置；</li>
+<li>选择了之后，持续跟踪风险指标，不要频繁更换。</li>
+<li>比率指标，如夏普，IR等，能排序，但是无法直观解释差异。</li>
+<li>风险调整收益率，如<span class="math inline">\(M^2\)</span>。可以直接告诉第一名和第二名差多少。</li>
+<li>任何风险指标放在一些比较，必须先明确口径，包括收益率计算方式、分母是n还是n-1，事前还是事后等等。</li>
+</ul>
+<p>我们回归整个系列，涵盖了从收益率如何计算，到业绩基准的选择原则，再到超额收益的来源归因，到最后选择合适的风险调整指标衡量风险收益整个过程。最有效的经验就是作为绩效分析岗，必须相当熟悉投资目标、策略、决策流程等，绩效评估的所有方法、工具和指标的选择，必须落脚点到投资组合本身的风格、策略和目标上。而这也是绩效反馈与控制的起点和落点。</p>
+<p>以上，作为学习绩效评估的记录。</p>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/FOF/performance-attribution-bonds-derivatives-derivatives-derivatives-derivatives/">投资绩效分析系列4：绩效归因-债券、衍生品及其他</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+
