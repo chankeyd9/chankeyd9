@@ -6,7 +6,26 @@
     <description>Recent content in Derivatives on cq</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://chenqian.ink/derivatives/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenqian.ink/derivatives/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于bear和bull spread的几点记录</title>
+      <link>https://chenqian.ink/Derivatives/Bear-or-Bull-spread/bear-bull-spread/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenqian.ink/Derivatives/Bear-or-Bull-spread/bear-bull-spread/</guid>
+      <description>主要回答以下几个问题：
+此类垂直价差的盈利模式是怎样的？call spread和put spread 有区别吗？基于当前现货位置，选择两个什么样的行权价？一、盈利模式call和put，bear和bull，总共4个组合。我们分别来inspect。约定\(S\)为现货价格，\(K_1\)和\(K_2\)是执行价，\(K_1&amp;lt;K_2\)。
+1. bear spread构建bear spread，也就是构建负delta的组合。
+（1）call bear根据call 的delta 特征，short \(c_{1}\)，long \(c_2\)。其中\(c_1\)是实值合约，所以call bear组合，建仓时是净现金流入的。
+先看看组合的希腊字母(\(K_1=3.2\), \(K_2=3.6\))：
+（2）put bear除了delta，其实put就是call，call就是put。当需要构造负的delta的时候，那long \(p_2\), short \(p_1\)，属于净现金流出。因为跟call bear都是在\(K_1\)执行价上short，在\(K_2\)执行价上long，所以gamma，vega和theta是相同的（前提是波动率接近）。而delta也是相同的，如下：
+\[\Delta_{p_2} - \Delta_{p_1}=N(d_{1}^{2})-1 - N(d_{1}^{1})+1 = N(d_{1}^{2}) - N(d_{1}^{1})=\Delta_{c_2} - \Delta_{c_1}\]
+2. bull spread其实就是 bear spread的头寸反过来，构建正delta的组合。
+（1）call bulllong \(c_{1}\)，short \(c_2\)，建仓时是净现金流出的。希腊祖母，按x轴反转就可以了。同上\(K_1=3.2\), \(K_2=3.6\)。
+（2）put bull同put bear道理，不再赘述。唯一变化的是，这是一个净现金流入的组合。
+3.</description>
+    </item>
+    
     <item>
       <title>分红与衍生品</title>
       <link>https://chenqian.ink/Derivatives/Dividend-and-Derivatives/dividend-and-derivatives/</link>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>关于bear和bull spread的几点记录 - cq</title>
+    <meta property="og:title" content="关于bear和bull spread的几点记录 - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="主要回答以下几个问题：
+[&amp;hellip;] call和put，bear和bull，总共4个组合。我们分别来inspect。约定\(S\)为现货价格，\(K_1\)和\(K_2\)是执行价，\(K_1&amp;lt;K_2\)。
+[&amp;hellip;] 构建bear spread，也就是构建负delta的组合。
+[&amp;hellip;] 根据call 的delta 特征，short \(c_{1}\)，long &amp;hellip;">
+      <meta property="og:description" content="主要回答以下几个问题：
+[&amp;hellip;] call和put，bear和bull，总共4个组合。我们分别来inspect。约定\(S\)为现货价格，\(K_1\)和\(K_2\)是执行价，\(K_1&amp;lt;K_2\)。
+[&amp;hellip;] 构建bear spread，也就是构建负delta的组合。
+[&amp;hellip;] 根据call 的delta 特征，short \(c_{1}\)，long &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="Derivatives">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>关于bear和bull spread的几点记录</h1>
+
+<h3>cq
+  /  2021-07-11</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+<script src="bear or bull spread_files/header-attrs/header-attrs.js"></script>
+
+
+<p>主要回答以下几个问题：</p>
+<ul>
+<li>此类垂直价差的盈利模式是怎样的？</li>
+<li>call spread和put spread 有区别吗？</li>
+<li>基于当前现货位置，选择两个什么样的行权价？</li>
+</ul>
+<div id="一盈利模式" class="section level2">
+<h2>一、盈利模式</h2>
+<p>call和put，bear和bull，总共4个组合。我们分别来inspect。约定<span class="math inline">\(S\)</span>为现货价格，<span class="math inline">\(K_1\)</span>和<span class="math inline">\(K_2\)</span>是执行价，<span class="math inline">\(K_1&lt;K_2\)</span>。</p>
+<div id="bear-spread" class="section level3">
+<h3>1. bear spread</h3>
+<p>构建bear spread，也就是构建负delta的组合。</p>
+<div id="call-bear" class="section level4">
+<h4>（1）call bear</h4>
+<p>根据call 的delta 特征，short <span class="math inline">\(c_{1}\)</span>，long <span class="math inline">\(c_2\)</span>。其中<span class="math inline">\(c_1\)</span>是实值合约，所以call bear组合，建仓时是净现金流入的。</p>
+<p>先看看组合的希腊字母(<span class="math inline">\(K_1=3.2\)</span>, <span class="math inline">\(K_2=3.6\)</span>)：</p>
+<p><img src="/Derivatives/Bear or Bull spread/bear%20or%20bull%20spread_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="put-bear" class="section level4">
+<h4>（2）put bear</h4>
+<p>除了delta，其实put就是call，call就是put。当需要构造负的delta的时候，那long <span class="math inline">\(p_2\)</span>, short <span class="math inline">\(p_1\)</span>，属于净现金流出。因为跟call bear都是在<span class="math inline">\(K_1\)</span>执行价上short，在<span class="math inline">\(K_2\)</span>执行价上long，所以gamma，vega和theta是相同的（前提是波动率接近）。而delta也是相同的，如下：</p>
+<p><span class="math display">\[
+\Delta_{p_2} - \Delta_{p_1}=N(d_{1}^{2})-1 - N(d_{1}^{1})+1 = N(d_{1}^{2}) - N(d_{1}^{1})=\Delta_{c_2} - \Delta_{c_1}
+\]</span></p>
+</div>
+</div>
+<div id="bull-spread" class="section level3">
+<h3>2. bull spread</h3>
+<p>其实就是 bear spread的头寸反过来，构建正delta的组合。</p>
+<div id="call-bull" class="section level4">
+<h4>（1）call bull</h4>
+<p>long <span class="math inline">\(c_{1}\)</span>，short <span class="math inline">\(c_2\)</span>，建仓时是净现金流出的。希腊祖母，按x轴反转就可以了。同上<span class="math inline">\(K_1=3.2\)</span>, <span class="math inline">\(K_2=3.6\)</span>。</p>
+<p><img src="/Derivatives/Bear or Bull spread/bear%20or%20bull%20spread_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="put-bull" class="section level4">
+<h4>（2）put bull</h4>
+<p>同put bear道理，不再赘述。唯一变化的是，这是一个净现金流入的组合。</p>
+</div>
+</div>
+<div id="盈利模式总结" class="section level3">
+<h3>3. 盈利模式总结</h3>
+<ul>
+<li><p>delta 大概在<span class="math inline">\(\frac{K_1+K_2}{2}\)</span>的位置取得最大，如果现货价格在这附近起伏，这段时间组合的损益是delta起主要作用。</p></li>
+<li><p>gamma会让delta绝对值在变小的过程中，经历一个慢快慢的过程。比如bear spread 在价格下降的时候，gamma会让我们赚没那么多了，当然价格上升的时候，也让我们不用亏那么多。</p></li>
+<li><p>theta很重要，当价格下跌的时候，theta会转正，且在<span class="math inline">\(K_1\)</span>位置取得最大值。这个下跌过程中，我们赚delta得钱，同时还赚theta的钱，并且theta逐渐起主要作用。但是如果方向反了，两个都在亏钱。所以做垂直价差，方向非常重要。<strong>组合建仓时，是现金流入还是现金流出，这个跟赚或者亏theta无关。</strong></p></li>
+<li><p>vega跟gamma类似，不过有意思的是，一般下跌的时候IV在上升，上涨的时候IV在下降，所以vega会帮助bull spread，欺负bear spread。当然这是经验法则，需要根据市场情况具体看，特别是市场缓慢变化的时候。</p></li>
+</ul>
+<p>现货什么样的轨迹，才对策略最有利呢？其实根据希腊字母，<strong>最优应该是现货快速变动到期望的执行价上（熊小牛大）赚到delta的钱，然后在该执行价上停留足够久，赚取short端的时间价值，即theta的钱</strong>。盈利模式这一点适用于以上4个组合，跟其他东西无关。</p>
+<p>我们用call bull（其他三个相同结果）模拟一下，三种现货的运动轨迹，快速上涨后稳住，逐步上涨和稳住不变后期快速上涨。</p>
+<p><img src="/Derivatives/Bear or Bull spread/bear%20or%20bull%20spread_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>模拟结果佐证了上述加粗部分的结论。当然，多数时候是在赚完delta的钱后，就平仓了，这时候时间过去不久，资金效率更高。</p>
+</div>
+</div>
+<div id="二call-和-put构造的spread有区别吗" class="section level2">
+<h2>二、call 和 put构造的spread有区别吗？</h2>
+<p>希腊字母和盈利模式方面，上面已经解释过了，两者完全相同，没有区别。我们从以下其他几个维度，进一步考虑：</p>
+<ul>
+<li>会在什么时候，两者其一的价差会相对更有优势吗？应该不会，因为平价公式的存在，会使得两者价差之间相差<span class="math inline">\(K_2-K_1\)</span>，如果存在优势，也是不足以套利的微小优势。</li>
+<li>波动率会导致区别吗？ call端波动率与put端波动率水平差距明显，比如2021年7月1日那次，call端波动率极低，put端波动率略高。bear spread策略可以赚delta收益，但是如果用call bear，那vega上会亏钱，适合用put bear。分析思路就是组合的vega图。</li>
+<li>会存在资金使用效率的区别吗？比如bear spread中，call bear属于净现金流入的，put bear属于净现金流出的。但是还需要考虑保证金占用的影响。call bear组合short实值的<span class="math inline">\(c_1\)</span>，会占用更多的保证金。put bear组合short虚值，占用更少的保证金，所有会有一个平衡。按交易所ETF期权保证金公式，具体来看一下：</li>
+</ul>
+<p>实值<span class="math inline">\(c_1\)</span>保证金占用，减去获取的期权费流入<span class="math inline">\(c_1-c_2\)</span>
+<span class="math display">\[
+cash_{call}=c_1+0.12S-(c_1-c_2)=c_2+0.12S
+\]</span></p>
+<p>虚值<span class="math inline">\(p_1\)</span>同理:
+<span class="math display">\[
+cash_{put}=p_1+0.12S-S+K_1-(p_1-p_2)=p_2+0.12S+K_1-S
+\]</span>
+同时，根据平价公式，不考虑利息：
+<span class="math display">\[
+c_2+K_2=p_2+S
+\]</span>
+化简以下：
+<span class="math display">\[
+cash_{call}-cash_{put}=2*S-(K_1+K_2)
+\]</span>
+对于bear spread，期待S下降，用call bear占用保证金会比put bear少越来越多。同理，对于bull spread，期待S上浮，适合用put bear。</p>
+</div>
+<div id="三基于当前现货位置选择两个什么样的行权价" class="section level2">
+<h2>三、基于当前现货位置，选择两个什么样的行权价？</h2>
+<p>当对现货方向有大概判断之后，如何选择合约。至于选择call还是put来构造，上面部分已经解决了。现在解决具体选择什么样的<span class="math inline">\(K_1\)</span>和<span class="math inline">\(K_2\)</span>。有以下几点考虑：</p>
+<ul>
+<li><p><span class="math inline">\(K_1\)</span>和<span class="math inline">\(K_2\)</span>的区间需要多开。分得越开，delta抵消的越少，组合delta绝对值越大。而同时其他组合的希腊字母能维持中性。这本质上其实就是一个现货头寸了。分得越小，盈利空间也就越小了。除非特意构造现货头寸，一般按预判的涨跌幅（以及历史1个标准差的波动范围）来选择<span class="math inline">\(K_1\)</span>和<span class="math inline">\(K_2\)</span>的区间。</p></li>
+<li><p>如何通过选择<span class="math inline">\(K_1\)</span>和<span class="math inline">\(K_2\)</span>来决定S和<span class="math inline">\(\frac{K_1+K_2}{2}\)</span>的关系：</p>
+<ul>
+<li>bear spread：
+<ul>
+<li><span class="math inline">\(S\ge \frac{K_1+K_2}{2}\)</span>: delta会先增到最大，再减。所以delta收益会增厚；但是建仓初期，如果现货没有下探，theta每天都会带来损失；</li>
+<li><span class="math inline">\(S&lt; \frac{K_1+K_2}{2}\)</span>: <strong>delta收益会减薄，但是theta空间会大很多。特别是建仓初期，如果现货无波动，逐日仍然会有微小的theta收益。这点选择对心态很有帮助。</strong>当然这也是一个风险与收益之间的选择。</li>
+</ul></li>
+<li>bull spread：同上述，则优先选择组合<span class="math inline">\(K_1\)</span>和<span class="math inline">\(K_2\)</span>使得，<span class="math inline">\(S\ge \frac{K_1+K_2}{2}\)</span>。</li>
+</ul>
+<p>那么幅度多少呢？给个模拟结果供大家参考。在做bear spread时，哪怕选择<span class="math inline">\(K_1=S\)</span>，这时候theta基本最大，1天的theta收益也只能大概抗住+0.07%的现货涨幅带来的delta损失。</p></li>
+</ul>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/Derivatives/Dividend-and-Derivatives/dividend-and-derivatives/">分红与衍生品</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+
