@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>SQL notes - cq</title>
+    <meta property="og:title" content="SQL notes - cq">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="聚焦高效简洁查询，忽略数据库管理控制
+[&amp;hellip;] 大型仓库将仓库空间划分为n份，租个各公司使用，每个租用的公司又将自己的仓库分为几个小房间，然后每个租用的公司会派出管理员管理小房间。那查询数据的过程就是，管理员去被授权的n个小房间里，找出物品的过程。
+[&amp;hellip;] Oracle逻辑是用户和表空间来管理和存储数据，Oracle的用户是在数据库（实例部分）之内的，所以很讲究用户的数据 &amp;hellip;">
+      <meta property="og:description" content="聚焦高效简洁查询，忽略数据库管理控制
+[&amp;hellip;] 大型仓库将仓库空间划分为n份，租个各公司使用，每个租用的公司又将自己的仓库分为几个小房间，然后每个租用的公司会派出管理员管理小房间。那查询数据的过程就是，管理员去被授权的n个小房间里，找出物品的过程。
+[&amp;hellip;] Oracle逻辑是用户和表空间来管理和存储数据，Oracle的用户是在数据库（实例部分）之内的，所以很讲究用户的数据 &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
+
+  </head>
+
+  
+  <body class="Gazebo">
+    <header class="masthead">
+      <h1><a href="/">cq</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/tags/">目录</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>SQL notes</h1>
+
+<h3>cq
+  /  2023-05-20</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+<script src="2023-05-20-Hello SQL_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="hello-sql" class="section level1">
+<h1>Hello SQL</h1>
+<div id="目的" class="section level2">
+<h2>目的</h2>
+<p>聚焦高效简洁查询，忽略数据库管理控制</p>
+</div>
+<div id="目录" class="section level2">
+<h2>目录</h2>
+<ul>
+<li>浅析Oracle空间架构：解决怎么熟悉你的查询对象</li>
+<li>熟悉表查询语言：解决在查询对象中怎么查询数据</li>
+</ul>
+</div>
+<div id="浅析oracle空间架构" class="section level2">
+<h2>浅析Oracle空间架构</h2>
+<p>大型仓库将仓库空间划分为n份，租个各公司使用，每个租用的公司又将自己的仓库分为几个小房间，然后每个租用的公司会派出管理员管理小房间。那查询数据的过程就是，管理员去被授权的n个小房间里，找出物品的过程。</p>
+<ul>
+<li>大型仓库即Oracle语境下（下同）的数据仓库，可以看作整个Oracle就只有一个数据仓库；</li>
+<li>单个公司的仓库空间即数据库，包含两个部分，1是物理数据存储在硬盘中，即所有物品；2是对物理数据的访问和使用的进程存在于内存之中，称作实例（Instance），即租用公司对物品的所有管理过程本身；</li>
+<li>小房间即表空间（Tablespace），每一个被查询的表数据就在表空间里面；</li>
+<li>物品即表（Table），数据以表（二维）的形式呈现；</li>
+<li>管理员即用户（Users），管理员受租用公司管理，可授权其管理哪几个小房间。物品由管理员管理（包括送进来Create，运出去Drop，拿下来看看Query）；</li>
+</ul>
+<p>Oracle逻辑是用户和表空间来管理和存储数据，Oracle的用户是在数据库（实例部分）之内的，所以很讲究用户的数据库所属。经常表示为“<a href="mailto:用户名@数据库名" class="email">用户名@数据库名</a>”。为了<strong>查询</strong>的话，需要：</p>
+<ol style="list-style-type: decimal">
+<li>用正确的用户登录进正确的数据库，才能select出你需要的数据。（如下图为PL/SQL登录界面）</li>
+</ol>
+<div class="figure">
+<img src="/Gazebo/Hello%20SQL/2023-05-20-Hello%20SQL_files/PLSQL.jpg" alt="" />
+<p class="caption">PLSQL</p>
+</div>
+<p>上图的“连接为”对应的选项用户层级，就是一般用户，系统管理员用户等。</p>
+<ol start="2" style="list-style-type: decimal">
+<li>得知道这个数据库以及用户总共物理存储了或者被授权了哪些表</li>
+</ol>
+<pre class="sql"><code>select table_name from dba_tables  -- 系统所有的表，dba是系统管理员
+select table_name from all_tables  -- 数据库所有的表 
+select table_name from user_tables -- 用户被授权的所有表</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>得知道某个表的所有列名以及列的属性</li>
+</ol>
+<pre class="sql"><code>select column_name, data_type from user_tab_columns where table_name = &#39;指定的表名&#39;
+select * from &#39;指定的表名&#39; where rownum &lt;= 5 -- 看看前五行的数据</code></pre>
+</div>
+<div id="熟悉表查询语言" class="section level2">
+<h2>熟悉表查询语言</h2>
+<div id="基础查询框架" class="section level4">
+<h4>1.基础查询框架</h4>
+<pre class="sql"><code>select t1.col1, t2.col2    -- 取啥，可多表多列
+from table_name1 t1, table_name2 t2  -- 从哪儿取，可多表，t1和t2为定义的表缩写
+where t1.col3 = t2.col4   -- 取数条件
+group by t2.col3
+order by t2.col3 </code></pre>
+<p>上述任何地方的列名，可以认为是向量，直接作为对象，运用函数。任何地方的列名连接都用逗号。</p>
+</div>
+<div id="过滤数据" class="section level4">
+<h4>2.过滤数据</h4>
+<ul>
+<li>distinct, 在select之后，过滤重复行，可多列</li>
+</ul>
+<pre class="sql"><code>select distinct first_name from contacts order by first_name -- 去除重复项
+
+select first_name, count(first_name) from contacts having count(first_name)&gt;1 group by first_name -- 引申part：查找重复项
+
+select state, count(state) from locations  group by state order by state nulls first; -- NULL 不计数</code></pre>
+<ul>
+<li>and/ or/ in/ between/ like 可用在where 条件里进行过滤。其中like类似通配符模式，%匹配0个或多个字符的任何字符串，_匹配任何单个字符</li>
+</ul>
+<pre class="sql"><code>select product_name, category_id from products where category_id not in (1, 4) order by product_name;  -- in 后面可为向量
+
+select product_name, category_id from products where product_name like &#39;ASR%&#39; order by product_name; -- % 任意个字符，-为单个字符
+
+select product_name, category_id from products where product_name like &#39;%99%&#39; and product_name like &#39;AS%&#39; order by product_name;
+
+select order_id, customer_id, status, to_char(order_date, &#39;YYYY-MM-DD&#39;) as order_date 
+from orders 
+where extract(year from order_date) = &#39;2017&#39;
+order by order_date2 desc;
+
+select order_id from orders where order_date between date &#39;2016-12-01&#39; and date &#39;2016-12-31&#39; order by order_date;
+</code></pre>
+<ul>
+<li>any/some/all, [not] exists：在子查询返回情况的判断，some同any。any可接数组或者子查询结果。</li>
+</ul>
+<pre class="sql"><code>select name
+from customers a
+where exists (
+      select 1 from orders where customer_id = a.customer_id   -- 注意这里一定是a在父查询里面，而不是子查询里面。a和b的省略是在各自的主体查询里的。
+      )
+order by name; 
+
+select name, b.order_id
+from customers a, orders b
+where not exists (
+      select null from orders where customer_id = a.customer_id -- 注意null的用法
+      )
+order by name;</code></pre>
+</div>
+<div id="排序数据" class="section level4">
+<h4>3.排序数据</h4>
+<ul>
+<li>order by，默认升序，如降序，需指定desc，可多列；null可指定在前或者后，nulls first 或者nulls last</li>
+</ul>
+</div>
+<div id="连接查询结果" class="section level4">
+<h4>4.连接查询结果</h4>
+<ul>
+<li>inner join 类似R函数merge，进行列合并</li>
+</ul>
+<pre class="sql"><code>select order_id, status, first_name, last_name
+from orders left join employees on orders.salesman_id = employees.employee_id
+order by order_date desc;</code></pre>
+<ul>
+<li>left join或者right join类似merge中的，all.x=true或者all.y=true</li>
+<li>union 类似于rbind，union all就不合并重复行；没有all就删除重复；进行行合并</li>
+</ul>
+<pre class="sql"><code>select first_name ||&#39; &#39;|| last_name name, email, &#39;contact&#39;
+from contacts
+union --all
+select first_name ||&#39; &#39;|| last_name name, email, &#39;employee&#39;
+from employees
+order by name desc;</code></pre>
+<ul>
+<li>intersect，行合并的交集；minus，行合并的差集，前者为基础</li>
+</ul>
+<pre class="sql"><code>select last_name from contacts
+intersect
+select last_name from employees;
+
+select last_name from contacts
+minus
+select last_name from employees;</code></pre>
+</div>
+<div id="分组查询结果" class="section level4">
+<h4>5.分组查询结果</h4>
+<ul>
+<li>group_by 演示如何将行分组为子组，并为每个分组应用聚合函数</li>
+</ul>
+<pre class="sql"><code>select b.name, count(a.order_id), max(a.order_date)
+from orders a inner join customers b using(customer_id)
+where status = &#39;Canceled&#39; and order_date &gt; date &#39;2016-10-10&#39;
+group by b.name;
+
+select customer_id, status, sum(quantity * unit_price) sales
+from orders inner join order_items using (order_id)
+group by customer_id, status  -- rollup(customer_id, status)会计算分类汇总项
+order by customer_id;</code></pre>
+<ul>
+<li>having 演示如何过滤分组中的行记录。where是过滤行，having过滤分组的行。</li>
+</ul>
+<pre class="sql"><code>select order_id, sum(unit_price * quantity) order_value
+from order_items
+group by order_id
+having sum(unit_price * quantity) &gt; 500000  -- having 不能使用新的变量名，挺bug的。
+order by order_value desc;</code></pre>
+</div>
+<div id="子查询" class="section level4">
+<h4>6.子查询</h4>
+<pre class="sql"><code>SELECT product_name, category_id, list_price,
+ROUND((SELECT AVG( list_price ) 
+       FROM products p1 
+       WHERE p1. category_id = p2.category_id),2) avg_list_price -- 注意这里p1和p2的用法
+FROM
+    products p2
+ORDER BY
+    category_id;
+
+select name 
+from customers
+where
+     customer_id not in (
+     select customer_id 
+     from orders 
+     where extract(year from order_date) = &#39;2017&#39;) 
+order by name;</code></pre>
+</div>
+<div id="几个关键函数" class="section level4">
+<h4>7.几个关键函数</h4>
+<ul>
+<li>length/concat(x,y)/replace/substr 以及dual的虚拟表</li>
+<li>rank() over (order by xx desc) as xxx &amp; dense_rank</li>
+<li>extract(year/month/day from ‘date’)</li>
+<li>to_char/to_date/to_number</li>
+<li>nvl(x,value):指定空值返回值；nvl2(x,value1, value2)</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/Gazebo/git-code/">Git常见命令备忘</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+
+
+  
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://chenqian.ink">Chen qian</a> 2020-2021 by Hugo | <a href="https://gitee.com/chankeyd_admin/backup/blob/master/Wechat.png">Wechat</a></div>
+  
+  </footer>
+  </article>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0VEC21TZN4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  </body>
+</html>
+

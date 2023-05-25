@@ -9,16 +9,16 @@
     <lastBuildDate>Sat, 20 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chenqian.ink/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SQL notes</title>
-      <link>https://chenqian.ink/Gazebo/sql-notes/</link>
+      <link>https://chenqian.ink/Gazebo/Hello-SQL/sql-notes/</link>
       <pubDate>Sat, 20 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://chenqian.ink/Gazebo/sql-notes/</guid>
-      <description>Hello SQL 目的 聚焦高效简洁查询，忽略数据库管理控制
-目录  浅析Oracle空间架构：解决怎么熟悉你的查询对象 熟悉表查询语言：解决在查询对象中怎么查询数据  浅析Oracle空间架构 大型仓库将仓库空间划分为n份，租个各公司使用，每个租用的公司又将自己的仓库分为几个小房间，然后每个租用的公司会派出管理员管理小房间。那查询数据的过程就是，管理员去被授权的n个小房间里，找出物品的过程。
- 大型仓库即Oracle语境下（下同）的数据仓库，可以看作整个Oracle就只有一个数据仓库； 单个公司的仓库空间即数据库，包含两个部分，1是物理数据存储在硬盘中，即所有物品；2是对物理数据的访问和使用的进程存在于内存之中，称作实例（Instance），即租用公司对物品的所有管理过程本身； 小房间即表空间（Tablespace），每一个被查询的表数据就在表空间里面； 物品即表（Table），数据以表（二维）的形式呈现； 管理员即用户（Users），管理员受租用公司管理，可授权其管理哪几个小房间。物品由管理员管理（包括送进来Create，运出去Drop，拿下来看看Query）；  Oracle逻辑是用户和表空间来管理和存储数据，Oracle的用户是在数据库（实例部分）之内的，所以很讲究用户的数据库所属。经常表示为“用户名@数据库名”。为了查询的话，需要：
- 用正确的用户登录进正确的数据库，才能select出你需要的数据。（如下图为PL/SQL登录界面）  ![](/Gazebo/2023-05-20-Hello SQL_files/PLSQL.png)
-上图的“连接为”对应的选项用户层级，就是一般用户，系统管理员用户等。
-得知道这个数据库以及用户总共物理存储了或者被授权了哪些表  select table_name from dba_tables -- 系统所有的表，dba是系统管理员 select table_name from all_tables -- 数据库所有的表 select table_name from user_tables -- 用户被授权的所有表 得知道某个表的所有列名以及列的属性  select column_name, data_type from user_tab_columns where table_name = &amp;#39;指定的表名&amp;#39; select * from &amp;#39;指定的表名&amp;#39; where rownum &amp;lt;= 5 -- 看看前五行的数据 熟悉表查询语言 1.基础查询框架 select t1.col1, t2.</description>
+      <guid>https://chenqian.ink/Gazebo/Hello-SQL/sql-notes/</guid>
+      <description>Hello SQL目的聚焦高效简洁查询，忽略数据库管理控制
+目录浅析Oracle空间架构：解决怎么熟悉你的查询对象熟悉表查询语言：解决在查询对象中怎么查询数据浅析Oracle空间架构大型仓库将仓库空间划分为n份，租个各公司使用，每个租用的公司又将自己的仓库分为几个小房间，然后每个租用的公司会派出管理员管理小房间。那查询数据的过程就是，管理员去被授权的n个小房间里，找出物品的过程。
+大型仓库即Oracle语境下（下同）的数据仓库，可以看作整个Oracle就只有一个数据仓库；单个公司的仓库空间即数据库，包含两个部分，1是物理数据存储在硬盘中，即所有物品；2是对物理数据的访问和使用的进程存在于内存之中，称作实例（Instance），即租用公司对物品的所有管理过程本身；小房间即表空间（Tablespace），每一个被查询的表数据就在表空间里面；物品即表（Table），数据以表（二维）的形式呈现；管理员即用户（Users），管理员受租用公司管理，可授权其管理哪几个小房间。物品由管理员管理（包括送进来Create，运出去Drop，拿下来看看Query）；Oracle逻辑是用户和表空间来管理和存储数据，Oracle的用户是在数据库（实例部分）之内的，所以很讲究用户的数据库所属。经常表示为“用户名@数据库名”。为了查询的话，需要：
+用正确的用户登录进正确的数据库，才能select出你需要的数据。（如下图为PL/SQL登录界面）PLSQL
+上图的“连接为”对应的选项用户层级，就是一般用户，系统管理员用户等。
+得知道这个数据库以及用户总共物理存储了或者被授权了哪些表select table_name from dba_tables -- 系统所有的表，dba是系统管理员select table_name from all_tables -- 数据库所有的表 select table_name from user_tables -- 用户被授权的所有表得知道某个表的所有列名以及列的属性select column_name, data_type from user_tab_columns where table_name = &amp;#39;指定的表名&amp;#39;select * from &amp;#39;指定的表名&amp;#39; where rownum &amp;lt;= 5 -- 看看前五行的数据熟悉表查询语言1.</description>
     </item>
     
     <item>
